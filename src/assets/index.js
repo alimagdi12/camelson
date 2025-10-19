@@ -4,5 +4,21 @@ import toggle from "./images/home/toggle.png";
 import eclipse from "./images/home/ellipse.png";
 import bannerImage from "./images/home/banner.png";
 import bottomline from "./images/home/bottomline.png";
-
-export { logo, lang, toggle, eclipse, bannerImage, bottomline };
+import facebook from "./icon/home/facebook.png";
+import linkedin from "./icon/home/linkedin.png";
+import tiktok from "./icon/home/tiktok.png";
+import whatsapp from "./icon/home/whatsapp.svg";
+import correct from "./icon/home/correct.png";
+export {
+  logo,
+  lang,
+  toggle,
+  eclipse,
+  bannerImage,
+  bottomline,
+  facebook,
+  linkedin,
+  tiktok,
+  whatsapp,
+  correct,
+};
