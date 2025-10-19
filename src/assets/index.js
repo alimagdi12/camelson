@@ -9,6 +9,8 @@ import linkedin from "./icon/home/linkedin.png";
 import tiktok from "./icon/home/tiktok.png";
 import whatsapp from "./icon/home/whatsapp.svg";
 import correct from "./icon/home/correct.png";
+import swiperImg1 from "./images/home/siwperimg1.jpg";
+
 export {
   logo,
   lang,
@@ -21,4 +23,5 @@ export {
   tiktok,
   whatsapp,
   correct,
+  swiperImg1,
 };

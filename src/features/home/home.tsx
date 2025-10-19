@@ -6,6 +6,7 @@ import PharoahLine from "./components/pharoah-line/Pharoah-line";
 import ImagesSection from "./components/images-section/Images-section";
 import Footer from "../../shared/components/footer/footer";
 import Packages from "./components/packages/Packages";
+import CustomSwiper from "./components/swiper/Swiper";
 const Home = () => {
   return (
     <div className="home-container">
@@ -16,6 +17,7 @@ const Home = () => {
         <Aboutus />
         <ImagesSection/>
         <PharoahLine/>
+        <CustomSwiper/>
         <Packages/>
       </div>
       <Footer/>
