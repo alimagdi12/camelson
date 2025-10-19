@@ -45,7 +45,7 @@ const Navbar = () => {
                   {link.label}
                 </a>
 
-                {/* 👇 if active show eclipse else toggle */}
+                {/*  if active show eclipse else toggle */}
                 <img
                   src={active === link.name ? eclipse : toggle}
                   alt={link.label}
@@ -80,9 +80,9 @@ const Navbar = () => {
                 <div className="language-divider"></div>
               </div>
             ))}
-            <div className="language-globe">
+            {/* <div className="language-globe">
               <img src={lang} alt="Globe" />
-            </div>
+            </div> */}
           </div>
         </div>
 
