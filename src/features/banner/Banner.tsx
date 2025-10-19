@@ -1,15 +1,11 @@
 import "./banner.scss";
-import { bannerImage } from "../../assets";
 const Banner = () => {
   return (
     <div className="banner">
-      <div className="image-box">
-        <img src={bannerImage} alt="" />{" "}
         <div className="text-box">
-          <h1>Lorem ipsum dolor sit amet consectetur adipisicing.</h1>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, </p>
           <button>Start Learning</button>
         </div>
-      </div>
     </div>
   );
 };
