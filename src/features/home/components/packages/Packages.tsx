@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./packages.scss";
-import type { Package, PackageFeature } from "../../core/models/model";
-import correctIcon from "../../assets/icon/home/correct.png";
+import type { Package, PackageFeature } from "../../../../core/models/model";
+import correctIcon from "../../../../assets/icon/home/correct.png";
 
 // Monthly packages data
 const monthlyPackages: Package[] = [
@@ -18,6 +18,20 @@ const monthlyPackages: Package[] = [
       { id: "6", text: "derstand videos. We help users", included: false },
     ],
     buttonText: "Try now",
+  },
+  {
+    id: "monthly-premium",
+    title: "Premium Package",
+    price: "500EGP",
+    features: [
+      { id: "1", text: "All basic features included", included: true },
+      { id: "2", text: "Advanced video processing", included: true },
+      { id: "3", text: "Priority support", included: true },
+      { id: "4", text: "Custom integrations", included: true },
+      { id: "5", text: "Analytics dashboard", included: true },
+      { id: "6", text: "API access", included: false },
+    ],
+    buttonText: "Get Premium",
   },
   {
     id: "monthly-premium",
