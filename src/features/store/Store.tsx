@@ -1,8 +1,10 @@
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import { categoryImg, searchIcon } from "../../assets";
-
 import "./Store.scss";
+import { useNavigate } from "react-router-dom";
+
 const Store = () => {
+  const navigate = useNavigate();
   const categories: string[] = [
     "Electronics",
     "Fashion",
@@ -16,6 +18,10 @@ const Store = () => {
     "labs",
   ];
 
+  const handleCardClick = (category: string) => {
+    navigate(`/store/${category}`);
+  };
+
   return (
     <div className="store-container">
       <div className="searchbar">
@@ -24,9 +30,16 @@ const Store = () => {
         </div>
         <input type="text" placeholder="Search" className="search-input" />
       </div>
+
       <div className="categories">
         {categories.map((category, index) => (
-          <Card key={index} className="category-card" elevation={4} sx={{ borderRadius: '16px' }}>
+          <Card
+            key={index}
+            className="category-card"
+            elevation={4}
+            sx={{ borderRadius: "16px" }}
+            onClick={() => handleCardClick(category)}
+          >
             <Box className="card-background">
               <img
                 src={categoryImg}
@@ -34,7 +47,7 @@ const Store = () => {
                 className="background-image"
               />
             </Box>
-          
+
             <CardContent className="card-content">
               <Typography variant="h6" className="card-title">
                 {category}
