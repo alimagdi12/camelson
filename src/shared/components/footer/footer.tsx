@@ -1,7 +1,8 @@
 import "./footer.scss";
 import { logo, facebook, linkedin, tiktok, whatsapp } from "../../../assets";
-
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t, i18n } = useTranslation();
   return (
     <footer className="footer">
       {/* Left Section - Logo and Social Media */}
@@ -25,40 +26,44 @@ const Footer = () => {
       {/* Middle Section - Navigation Links */}
       <div className="nav-section">
         <div className="nav-aboutus">
-          <h3>About us</h3>
-          <a href="#">Service policy</a>
-          <a href="#">Terms of use</a>
+          <h3>{t("footer.about.title")}</h3>
+          <a href="#">{t("footer.about.policy")}</a>
+          <a href="#">{t("footer.about.terms")}</a>
         </div>
       </div>
 
+      {/* Titles Section */}
       <div className="nav-titles">
         <div>
-          <h3>Titles</h3>
-          <a href="#">Blogs</a>
-          <a href="#">Store</a>
+          <h3>{t("footer.titles.title")}</h3>
+          <a href="#">{t("footer.titles.blogs")}</a>
+          <a href="#">{t("footer.titles.store")}</a>
         </div>
       </div>
-      {/* Right Section - Contact and Address */}
+
+      {/* Technical Support Section */}
       <div className="technical-support">
-        <h3>Technical Support</h3>
+        <h3>{t("footer.support.title")}</h3>
+
         <div className="contacts">
-          <div className="contact-item">
-            <div className="whatsapp-icon">
-              <img src={whatsapp} alt="WhatsApp" />
-            </div>
-            <span>+20120005165</span>
-          </div>
-          <div className="contact-item">
-            <div className="whatsapp-icon">
-              <img src={whatsapp} alt="WhatsApp" />
-            </div>
-            <span>+20120005165</span>
-          </div>{" "}
+          {t("footer.support.phones", { returnObjects: true }).map(
+            (phone, i) => (
+              <div className="contact-item" key={i}>
+                <div className="whatsapp-icon">
+                  <img src={whatsapp} alt="WhatsApp" />
+                </div>
+                <span>{phone}</span>
+              </div>
+            )
+          )}
         </div>
 
         <div className="address">
-          <p>العنوان: مصر - بورسعيد - حي المناخ</p>
-          <p>شارع 23 يوليو - برج فرهود الدور الثالث</p>
+          {t("footer.support.address", { returnObjects: true }).map(
+            (line, i) => (
+              <p key={i}>{line}</p>
+            )
+          )}
         </div>
       </div>
     </footer>

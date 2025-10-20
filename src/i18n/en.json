@@ -1,9 +1,45 @@
 {
-    "navbar":{
-        "home":"Home",
-        "store":"Store",
-        "plans":"Plans",
-        "features":"Features",
-        "story":"Our Story"
+  "navbar": {
+    "home": "Home",
+    "store": "Store",
+    "plans": "Plans",
+    "features": "Features",
+    "story": "Our Story"
+  },
+
+  "home": {
+    "question1": "Is Osmosis right for my specialty?",
+    "paragrahph1": "Yes, anyone pursuing a career in medicine, nursing, or health care can benefit from our platform, which turns complex topics into easy-to-understand videos. We help users confidently learn and prepare for classroom lectures, clinical rotations, boards, and exams. We support you throughout your journey — from day one to patient one and beyond! For the price of a textbook or two, Osmosis covers virtually every Is Osmosis right for my specialty? topic imaginable, on a single platform that you can access on your phone. Choose the plan length that works with your budget (the longer you subscribe, the more you save) and you can cancel anytime. Yes, anyone pursuing a career in medicine, nursing, or health care can benefit from our platform, which turns complex topics into easy-to-understand videos. We help users confidently learn and prepare for classroom lectures, clinical rotations, boards, and exams. We support you throughout your journey — from day one to patient one and beyond! For the price of a textbook or two, Osmosis covers virtually every Is Osmosis right for my specialty? topic imaginable, on a single platform. Choose the plan length that works with your budget (the longer you subscribe, the more you save) and you can cancel anytime.",
+    "paragrahph2": "For the price of a textbook or two, Osmosis covers virtually every Is Osmosis right for my specialty? topic imaginable, on a single platform that you can access on your phone.",
+    "paragrahph3": "Choose the plan length that works with your budget (the longer you subscribe, the more you save) and you can cancel anytime. Yes, anyone pursuing a career in medicine, nursing, or health care can benefit from our platform, which turns complex topics into easy-to-understand videos. We help users confidently learn and prepare for classroom lectures, clinical rotations, boards, and exams. We support you throughout your journey — from day one to patient one and beyond!",
+    "paragrahph4": "For the price of a textbook or two, Osmosis covers virtually every Is Osmosis right for my specialty? topic imaginable, on a single platform. Choose the plan length that works with your budget (the longer you subscribe, the more you save) and you can cancel anytime.",
+    "question2": "Is Osmosis right for my specialty?",
+    "paragraph5": "Yes, anyone pursuing a career in medicine, nursing, or health care can benefit from our platform, which turns complex topics into easy-to-understand videos. We help users confidently learn and prepare for classroom lectures, clinical rotations, boards, and exams. We support you throughout your journey — from day one to patient one and beyond!",
+    "paragraph6": "For the price of a textbook or two, Osmosis covers virtually every Is Osmosis right for my specialty? topic imaginable, on a single platform that you can access on your phone."
+  },
+  "footer": {
+    "about": {
+      "title": "About us",
+      "policy": "Service policy",
+      "terms": "Terms of use"
+    },
+    "titles": { "title": "Titles", "blogs": "Blogs", "store": "Store" },
+    "support": {
+      "title": "Technical Support",
+      "phones": ["+20120005165", "+20120005165"],
+      "address": [
+        "Address: Egypt - Port Said - El Manakh District",
+        "23 July Street - Farhoud Tower, 3rd Floor"
+      ]
     }
+  }
+,
+   "compdata": {
+    "title": "Complete the data",
+    "university": "University",
+    "college": "College",
+    "phone": "Phone number",
+    "year": "Academic year",
+    "confirm": "Confirm"
+  }
 }

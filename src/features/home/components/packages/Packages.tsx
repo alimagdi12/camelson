@@ -160,7 +160,7 @@ const Packages = () => {
     activeTab === "monthly" ? monthlyPackages : yearlyPackages;
 
   return (
-    <div className="packages-container">
+    <div className="packages-container" id="plans">
       <div className="tabs">
         <PackageTabs activeTab={activeTab} onTabChange={handleTabChange} />
       </div>

@@ -1,0 +1,112 @@
+.section-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 70vh;
+  background-image: url("../../assets/images/home/home-gradiant.png");
+  background-position: center -500px;
+
+  background-size: cover; /* scales nicely */
+  background-repeat: repeat-x;
+}
+/* Ensure image is visible and sized */
+.section-container .img-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  img {
+    max-width: 90%;
+    height: auto;
+    display: block;
+  }
+}
+
+.input-box {
+  width: 30%;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  //   margin: 40px auto;
+  background: #ffffff;
+  //   border: 1px solid #000000;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.input-box h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 8px 0 24px 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 90%;
+}
+
+.select-input {
+  height: 48px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 0 16px;
+  background: #ffffff;
+  color: #555555;
+}
+
+.phone-input {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 0 12px;
+}
+
+.phone-input .flag {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.phone-input input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 16px;
+  color: #bdbdbd;
+}
+
+.confirm-btn {
+  margin-top: 20px;
+  width: 100%;
+  height: 52px;
+  background: #ffbe3b;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000000;
+}
+
+[dir="rtl"] .arrow {
+  right: 30px;
+}
+
+
+[dir="rtl"] .react-tel-input {
+  direction: ltr;
+
+}

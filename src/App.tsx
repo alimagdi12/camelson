@@ -6,6 +6,7 @@ import Footer from "./shared/components/footer/footer";
 import "./App.scss";
 import Store from "./features/store/Store";
 import SubCategory from "./features/sub-category/Sub-category";
+import Compdata from "./features/completeData/Compdata";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/store" element={<Store />} />
         <Route path="/store/:sub-category" element={<SubCategory/>} />
+        <Route path="/complete-data" element={<Compdata />} />
         <Route path="/user-management/:page" element={<UserManagement />} />
       </Routes>
       <Footer />

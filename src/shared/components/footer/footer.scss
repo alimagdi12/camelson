@@ -4,8 +4,7 @@ footer {
   width: 100%;
   height: 418px;
   opacity: 1;
-  border-top-left-radius: 40px;
-  border-top-right-radius: 40px;
+ 
   padding: 43px 42px;
   gap: 10px;
   background-color: #000000;
@@ -181,3 +180,10 @@ footer {
   height: 100%;
   background-color: #ffbe3b;
 }
+[dir="rtl"] .technical-support::before,
+[dir="rtl"] .nav-titles::before {
+  left: auto; /* Disable left */
+  right: -30px; /* Move to the right */
+}
+
+

@@ -14,6 +14,7 @@ import swiperImg1 from "./images/home/siwperimg1.jpg";
 import categoryImg from "./images/store/categoryImg.png";
 import searchIcon from "./icon/store/search.png";
 
+import gradImage from "./images/completeData/gradimage.png";
 export {
   logo,
   lang,
@@ -29,4 +30,5 @@ export {
   swiperImg1,
   categoryImg,
   searchIcon,
+  gradImage,
 };
