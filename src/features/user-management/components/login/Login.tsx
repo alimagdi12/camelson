@@ -8,7 +8,10 @@ import type { FormData } from "../../../../core/models/Login";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
+  const [formData, setFormData] = useState<FormData>({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +25,7 @@ function Login() {
   };
 
   const handleSignupClick = () => {
-    navigate("/user-management/signup"); 
+    navigate("/user-management/signup");
   };
 
   return (
@@ -65,9 +68,11 @@ function Login() {
             </Button>
 
             <button
+              type="button"
               className="google-btn"
+              onClick={() => navigate("/complete-data")}
             >
-              <img src={GoogleIcon} alt="" />
+              <img src={GoogleIcon} alt="Google Icon" />
               Google
             </button>
           </form>
@@ -79,7 +84,9 @@ function Login() {
             className="register-text"
           >
             Don't Have Account{" "}
-            <span className="register-link" onClick={handleSignupClick}>Register</span>
+            <span className="register-link" onClick={handleSignupClick}>
+              Register
+            </span>
           </Typography>
         </div>
       </div>
