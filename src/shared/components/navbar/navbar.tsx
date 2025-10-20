@@ -2,20 +2,21 @@ import "./navbar.scss";
 // @ts-expect-error - Assets module doesn't have TypeScript declarations
 import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [active, setActive] = useState("home");
+  // const [active, setActive] = useState("home");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const links = [
-    { name: "home", label: "Home" },
-    { name: "story", label: "Our Story" },
-    { name: "features", label: "Features" },
-    { name: "plans", label: "Plans" },
-    { name: "store", label: "Store" },
+    { name: "home", label: "Home", href: "/" },
+    { name: "story", label: "Our Story", href: "#" },
+    { name: "features", label: "Features", href: "#" },
+    { name: "plans", label: "Plans", href: "#" },
+    { name: "store", label: "Store", href: "/store" },
   ];
 
   const languages = [
@@ -33,39 +34,47 @@ const Navbar = () => {
   };
 
   const handleLogoClick = () => {
-    navigate("/"); 
+    navigate("/");
   };
   const handleSignInClick = () => {
-    navigate("/user-management/login"); 
+    navigate("/user-management/login");
   };
 
   return (
     <nav>
       <div className="logo" onClick={handleLogoClick}>
-        <img src={logo} alt="Logo"  />
+        <img src={logo} alt="Logo" />
       </div>
 
       <div className="nav-links">
         <div className="section">
           <ul className="links">
-            {links.map((link, index) => (
-              <li key={link.name} onClick={() => setActive(link.name)}>
-                <a href="#" className={active === link.name ? "active" : ""}>
-                  {link.label}
-                </a>
+            {links.map((link, index) => {
+              const isActive =
+                location.pathname === link.href ||
+                (link.href !== "/" && location.pathname.startsWith(link.href));
+              return (
+                <li key={link.name} >
+                  <Link
+                    to={link.href}
+                    className={isActive ? "active" : ""}
+                  >
+                    {link.label}
+                  </Link>
 
-                {/*  if active show eclipse else toggle */}
-                <img
-                  src={active === link.name ? eclipse : toggle}
-                  alt={link.label}
-                  className="link-icon"
-                />
+                  {/*  if active show eclipse else toggle */}
+                  <img
+                    src={isActive ? eclipse : toggle}
+                    alt={link.label}
+                    className="link-icon"
+                  />
 
-                {index !== links.length - 1 && (
-                  <span className="divider"></span>
-                )}
-              </li>
-            ))}
+                  {index !== links.length - 1 && (
+                    <span className="divider"></span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
@@ -94,7 +103,9 @@ const Navbar = () => {
             </div> */}
           </div>
         </div>
-        <button className="signin" onClick={handleSignInClick}>Sign In</button>
+        <button className="signin" onClick={handleSignInClick}>
+          Sign In
+        </button>
       </div>
     </nav>
   );

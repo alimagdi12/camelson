@@ -1,6 +1,7 @@
 .packages-container {
   padding: 20px;
   background-color: transparent;
+  margin-top: 120px;
 }
 
 .tabs {
@@ -61,11 +62,16 @@
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+  margin-bottom: 120px;
+  
+  scroll-behavior: smooth;
+  scrollbar-width: none
 }
 
 .package-card {
   background: rgba(255, 255, 255, 0.8);
-  border: 2px solid linear-gradient(rgba(255, 255, 255, 1),rgba(115, 115, 115, 1));
+  border: 2px solid
+    linear-gradient(rgba(255, 255, 255, 1), rgba(115, 115, 115, 1));
   opacity: 80%;
   border-radius: 16px;
   padding: 24px;

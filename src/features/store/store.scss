@@ -1,0 +1,110 @@
+.store-container {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  background-image: url('../../assets/images/home/home-gradiant.png');
+  object-fit: cover;
+  background-repeat: repeat-x;
+  height: 100%;
+   background-size: cover; /* scales nicely */
+      background-position: center -500px;
+    margin-bottom: 40px;
+}
+
+.searchbar {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+  height: 72px;
+  background: #ffffff;
+  border: 1px solid #000;
+  border-radius: 16px;
+}
+
+.search-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  flex: 1;
+  height: 40px;
+  font-size: 24px;
+  color: #bdbdbd;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.search-input::placeholder {
+  color: #bdbdbd;
+}
+
+/* ✅ Categories grid */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px); /* fixed 300px cards */
+  gap: 24px;
+  justify-content: center; /* centers all rows */
+  width: 100%;
+  padding: 24px;
+  margin-bottom: 50px;
+}
+
+/* ✅ Card design */
+.category-card {
+  width: 300px;
+  height: 401px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background: transparent; /* remove white fill */
+}
+
+.card-background {
+  position: absolute;
+  inset: 0;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ✅ Bottom yellow label */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 190, 59, 0.9);
+  padding: 16px 8px;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ensure MUI card content default padding doesn't add gaps */
+/* override MUI CardContent padding */
+.MuiCardContent-root.card-content {
+  padding: 12px 0 !important;
+}
+.card-title {
+  color: #000;
+  font-weight: 700;
+  font-size: 32px;
+  text-align: center;
+}

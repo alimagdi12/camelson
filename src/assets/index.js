@@ -11,6 +11,9 @@ import whatsapp from "./icon/home/whatsapp.svg";
 import correct from "./icon/home/correct.png";
 import swiperImg1 from "./images/home/siwperimg1.jpg";
 
+import categoryImg from "./images/store/categoryImg.png";
+import searchIcon from "./icon/store/search.png";
+
 export {
   logo,
   lang,
@@ -24,4 +27,6 @@ export {
   whatsapp,
   correct,
   swiperImg1,
+  categoryImg,
+  searchIcon,
 };
