@@ -2,11 +2,13 @@ import "./navbar.scss";
 // @ts-expect-error - Assets module doesn't have TypeScript declarations
 import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("home");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const navigate = useNavigate();
 
   const links = [
     { name: "home", label: "Home" },
@@ -30,10 +32,17 @@ const Navbar = () => {
     setIsLanguageOpen(false);
   };
 
+  const handleLogoClick = () => {
+    navigate("/"); 
+  };
+  const handleSignInClick = () => {
+    navigate("/user-management/login"); 
+  };
+
   return (
     <nav>
-      <div className="logo">
-        <img src={logo} alt="Logo" />
+      <div className="logo" onClick={handleLogoClick}>
+        <img src={logo} alt="Logo"  />
       </div>
 
       <div className="nav-links">
@@ -85,8 +94,7 @@ const Navbar = () => {
             </div> */}
           </div>
         </div>
-
-        <button className="signin">Sign In</button>
+        <button className="signin" onClick={handleSignInClick}>Sign In</button>
       </div>
     </nav>
   );

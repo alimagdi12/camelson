@@ -1,5 +1,5 @@
 import "./aboutus.scss";
-import "../pharoah-line/Pharoah-line"
+import "../../../../shared/components/pharoah-line/Pharoah-line"
 const Aboutus = () => {
   return (
     <>

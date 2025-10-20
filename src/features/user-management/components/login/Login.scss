@@ -1,0 +1,73 @@
+.login-container {
+    height: 950px;
+    display: flex;
+    background-image: url('../../assets/images/home/home-gradiant.png');
+    background-position: center -500px;
+    background-repeat: repeat-x;
+    
+    .form-section {
+        width: 47%;
+        .form-box {
+            width: 75%;
+            border: 1px solid linear-gradient(131.91deg, #FFFFFF 38.39%, #737373 73.6%);
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    .image-section {
+        width: 53%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+        object-fit: cover;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        }
+    }
+}
+
+.login-btn {
+    background-color: #ffbe3d !important;
+    color: #000 !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    font-size: 16px !important;
+    padding: 10px 0 !important;
+    border-radius: 8px !important;
+}
+
+.google-btn {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: right;
+    border-radius: 8px !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background-color: white;
+    padding: 5px 0;
+    border: 1px solid black;
+    img{
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.register-text {
+    color: #333;
+}
+
+.register-link {
+    color: #ffbe3d;
+    font-weight: 600;
+    cursor: pointer;
+}
