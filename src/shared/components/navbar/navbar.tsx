@@ -1,11 +1,11 @@
 import "./navbar.scss";
 import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const [active, setActive] = useState("home");
+  // const [active, setActive] = useState("home");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ const Navbar = () => {
     setSelectedLanguage(newLang === "ar" ? "Arabic" : "English");
   };
 
-  const handleLanguageSelect = (language) => {
+  const handleLanguageSelect = (language : any) => {
     if (language === "Arabic") {
       i18n.changeLanguage("ar");
       setSelectedLanguage("Arabic");
@@ -39,8 +39,9 @@ const Navbar = () => {
     { name: "features", label: t("navbar.features") },
     { name: "plans", label: t("navbar.plans") },
     { name: "store", label: t("navbar.store") },
-  ];
-
+  ]
+  const location = useLocation();
+  
   const languages = [
     { name: "Arabic", label: "العربية" },
     { name: "English", label: "English" },
@@ -63,19 +64,32 @@ const Navbar = () => {
       <div className="nav-links">
         <div className="section">
           <ul className="links">
-            {links.map((link, index) => (
-              <li key={link.name} onClick={() => setActive(link.name)}>
-                <a href="#" className={active === link.name ? "active" : ""}>
-                  {link.label}
-                </a>
-                <img
-                  src={active === link.name ? eclipse : toggle}
-                  alt={link.label}
-                  className="link-icon"
-                />
-                {index !== links.length - 1 && <span className="divider"></span>}
-              </li>
-            ))}
+            {links.map((link, index) => {
+              const isActive =
+                location.pathname === link.name ||
+                (link.name !== "/" && location.pathname.startsWith(link.name));
+              return (
+                <li key={link.name} >
+                  <Link
+                    to={link.name}
+                    className={isActive ? "active" : ""}
+                  >
+                    {link.label}
+                  </Link>
+
+                  {/*  if active show eclipse else toggle */}
+                  <img
+                    src={isActive ? eclipse : toggle}
+                    alt={link.label}
+                    className="link-icon"
+                  />
+
+                  {index !== links.length - 1 && (
+                    <span className="divider"></span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

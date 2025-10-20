@@ -19,20 +19,7 @@ const monthlyPackages: Package[] = [
     ],
     buttonText: "Try now",
   },
-  {
-    id: "monthly-premium",
-    title: "Premium Package",
-    price: "500EGP",
-    features: [
-      { id: "1", text: "All basic features included", included: true },
-      { id: "2", text: "Advanced video processing", included: true },
-      { id: "3", text: "Priority support", included: true },
-      { id: "4", text: "Custom integrations", included: true },
-      { id: "5", text: "Analytics dashboard", included: true },
-      { id: "6", text: "API access", included: false },
-    ],
-    buttonText: "Get Premium",
-  },
+ 
   {
     id: "monthly-premium",
     title: "Premium Package",
@@ -191,3 +178,6 @@ const Packages = () => {
 };
 
 export default Packages;
+
+
+
