@@ -1,21 +1,44 @@
 import "./navbar.scss";
-// @ts-expect-error - Assets module doesn't have TypeScript declarations
 import { logo, lang, toggle, eclipse } from "../../../assets";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const [active, setActive] = useState("home");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
+
+  // Change layout direction based on selected language
+  useEffect(() => {
+    document.body.dir = i18n.language === "ar" ? "rtl" : "ltr";
+  }, [i18n.language]);
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ar" : "en";
+    i18n.changeLanguage(newLang);
+    setSelectedLanguage(newLang === "ar" ? "Arabic" : "English");
+  };
+
+  const handleLanguageSelect = (language) => {
+    if (language === "Arabic") {
+      i18n.changeLanguage("ar");
+      setSelectedLanguage("Arabic");
+    } else {
+      i18n.changeLanguage("en");
+      setSelectedLanguage("English");
+    }
+    setIsLanguageOpen(false);
+  };
 
   const links = [
-    { name: "home", label: "Home" },
-    { name: "story", label: "Our Story" },
-    { name: "features", label: "Features" },
-    { name: "plans", label: "Plans" },
-    { name: "store", label: "Store" },
+    { name: "home", label: t("navbar.home") },
+    { name: "story", label: t("navbar.story") },
+    { name: "features", label: t("navbar.features") },
+    { name: "plans", label: t("navbar.plans") },
+    { name: "store", label: t("navbar.store") },
   ];
 
   const languages = [
@@ -23,26 +46,18 @@ const Navbar = () => {
     { name: "English", label: "English" },
   ];
 
-  const handleLanguageToggle = () => {
-    setIsLanguageOpen(!isLanguageOpen);
-  };
-
-  const handleLanguageSelect = (language: string) => {
-    setSelectedLanguage(language);
-    setIsLanguageOpen(false);
-  };
-
   const handleLogoClick = () => {
-    navigate("/"); 
+    navigate("/");
   };
+
   const handleSignInClick = () => {
-    navigate("/user-management/login"); 
+    navigate("/user-management/login");
   };
 
   return (
     <nav>
       <div className="logo" onClick={handleLogoClick}>
-        <img src={logo} alt="Logo"  />
+        <img src={logo} alt="Logo" />
       </div>
 
       <div className="nav-links">
@@ -53,17 +68,12 @@ const Navbar = () => {
                 <a href="#" className={active === link.name ? "active" : ""}>
                   {link.label}
                 </a>
-
-                {/*  if active show eclipse else toggle */}
                 <img
                   src={active === link.name ? eclipse : toggle}
                   alt={link.label}
                   className="link-icon"
                 />
-
-                {index !== links.length - 1 && (
-                  <span className="divider"></span>
-                )}
+                {index !== links.length - 1 && <span className="divider"></span>}
               </li>
             ))}
           </ul>
@@ -71,8 +81,12 @@ const Navbar = () => {
       </div>
 
       <div className="buttons">
-        <div className="language-container">
-          <button className="language" onClick={handleLanguageToggle}>
+        <div
+          className="language-container"
+          onMouseEnter={() => setIsLanguageOpen(true)}
+          onMouseLeave={() => setIsLanguageOpen(false)}
+        >
+          <button className="language" onClick={toggleLanguage}>
             <img src={lang} alt="Language" />
           </button>
 
@@ -89,12 +103,12 @@ const Navbar = () => {
                 <div className="language-divider"></div>
               </div>
             ))}
-            {/* <div className="language-globe">
-              <img src={lang} alt="Globe" />
-            </div> */}
           </div>
         </div>
-        <button className="signin" onClick={handleSignInClick}>Sign In</button>
+
+        <button className="signin" onClick={handleSignInClick}>
+          {t("signin") || "Sign In"}
+        </button>
       </div>
     </nav>
   );

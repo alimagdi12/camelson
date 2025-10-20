@@ -1,0 +1,9 @@
+{
+    "navbar":{
+        "home":"Home",
+        "store":"Store",
+        "plans":"Plans",
+        "features":"Features",
+        "story":"Our Story"
+    }
+}
