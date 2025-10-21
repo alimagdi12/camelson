@@ -15,14 +15,14 @@
   border-radius: 12px;
   padding: 4px;
   // box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  gap: 4px;
+  gap: 10px;
 }
 
 .tab-button {
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -63,9 +63,9 @@
   gap: 20px;
   flex-wrap: wrap;
   margin-bottom: 120px;
-  
+
   scroll-behavior: smooth;
-  scrollbar-width: none
+  scrollbar-width: none;
 }
 
 .package-card {
@@ -95,7 +95,7 @@
 }
 
 .package-title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 700;
   color: #000;
   margin: 0 0 8px 0;
@@ -162,7 +162,7 @@
 }
 
 .feature-text {
-  font-size: 14px;
+  font-size: 16px;
   color: #000;
   line-height: 1.4;
   flex-grow: 1;
@@ -174,8 +174,8 @@
   border: none;
   border-radius: 8px;
   padding: 12px 24px;
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s ease;
   align-self: center;

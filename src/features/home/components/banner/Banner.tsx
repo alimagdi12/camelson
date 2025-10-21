@@ -4,7 +4,12 @@ const Banner = () => {
     <>
       <div className="banner">
         <div className="text-box">
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem
+            ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum
+            dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit
+            amet, consectetuer adipiscing elit,{" "}
+          </p>
           <button>Start Learning</button>
         </div>
       </div>

@@ -2,7 +2,9 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import { categoryImg, searchIcon } from "../../assets";
 
 import "./Store.scss";
+import { useTranslation } from "react-i18next";
 const Store = () => {
+  const {t } = useTranslation()
   const categories: string[] = [
     "Electronics",
     "Fashion",
@@ -22,7 +24,7 @@ const Store = () => {
         <div className="search-icon">
           <img src={searchIcon} alt="" />
         </div>
-        <input type="text" placeholder="Search" className="search-input" />
+        <input type="text" placeholder={t("search.search")} className="search-input" />
       </div>
       <div className="categories">
         {categories.map((category, index) => (
@@ -36,7 +38,7 @@ const Store = () => {
             </Box>
           
             <CardContent className="card-content">
-              <Typography variant="h6" className="card-title">
+              <Typography variant="h6" className="card-title" fontWeight={700}>
                 {category}
               </Typography>
             </CardContent>

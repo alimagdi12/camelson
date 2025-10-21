@@ -1,78 +1,76 @@
-.images-section{
-    width: 85%;
-    margin: auto;
-    height: auto;
-    border: none;
+.images-section {
+  width: 85%;
+  margin: auto;
+  height: auto;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  .left-section {
+    width: 60%;
+    position: relative;
     display: flex;
-    flex-direction: row;
-    .left-section{
-        width: 60%;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .upper-image , .lower-image{
-            position: absolute;
-            border-radius: 24px;
-        }
-        .upper-image{
-            width: 433px;
-            height:322px;
-            top: -140px;
-            right: 15%;
-            z-index: 2;
-        }
-        .middle-image {
-            width: 855px;
-            height: 547px;
-            border-radius: 24px;
-            z-index: 1;
-        }
-        .lower-image{
-            width: 304px;
-            height: 333px;
-            right: 15%;
-            bottom: -100px;
-            z-index: 2;
-        }
+    align-items: center;
+    justify-content: center;
+    .upper-image,
+    .lower-image {
+      position: absolute;
+      border-radius: 24px;
     }
-    .right-section{
-        width: auto;
-        max-width: 60%;
-        min-width: 50%;
-        position: absolute;
-        right: 5%;
-        height: auto;
-        margin: auto;
-        opacity: 1;
-        padding: 30px;
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: column;
-        border-radius: 24px;
-        box-sizing: border-box;
-        background: #DFDFDFCC;
-        border: 3px solid transparent;
-        
-        h1 {
-            margin: 0 0 10px 0;
-            font-family: "Ek Mukta", sans-serif;
-            font-weight: 700;
-            font-style: normal;
-            font-size: 48px;
-            line-height: 120%;
-            letter-spacing: 0;
-            color: #094c75;
-            text-align: left;
-        }
-
-        p {
-            font-weight: 400;
-            font-style: Regular;
-            font-size: 24px;
-            letter-spacing: 0%;
-
-        }
-        z-index: 3;
+    .upper-image {
+      width: 433px;
+      height: 322px;
+      top: -140px;
+      right: 15%;
+      z-index: 2;
     }
+    .middle-image {
+      width: 855px;
+      height: 547px;
+      border-radius: 24px;
+      z-index: 1;
+    }
+    .lower-image {
+      width: 304px;
+      height: 333px;
+      right: 15%;
+      bottom: -100px;
+      z-index: 2;
+    }
+  }
+  .right-section {
+    width: auto;
+    max-width: 60%;
+    min-width: 50%;
+    position: absolute;
+    right: 5%;
+    top: 28%;
+    height: auto;
+    margin: auto;
+    opacity: 1;
+    padding: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    border-radius: 24px;
+    box-sizing: border-box;
+    background: #dfdfdfcc;
+    border: 3px solid transparent;
+
+    h1 {
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #094c75;
+      text-align: left;
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 18px;
+      letter-spacing: 0%;
+    }
+    z-index: 3;
+  }
 }

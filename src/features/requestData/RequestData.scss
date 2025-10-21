@@ -1,0 +1,52 @@
+.request-container {
+  background-image: url("../../assets/images/home/newbg.jpg");
+  height: 1000px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .request-form {
+    width: 70%;
+    height: 750px;
+
+    background: #ffffff80;
+    border-radius: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 50px;
+    h1 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+  }
+}
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  gap: 10px;
+  .phone-location {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .phone-location > :first-child {
+    width: 40%; // first child
+  }
+
+  .phone-location > :last-child {
+    width: 40%; // second child
+  }
+}

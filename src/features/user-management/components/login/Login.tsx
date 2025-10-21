@@ -32,7 +32,7 @@ function Login() {
     <div className="login-container">
       <div className="form-section d-flex flex-column justify-content-center align-items-end">
         <div className="form-box p-5">
-          <Typography variant="h4" fontWeight="bold" textAlign="center" mb={3}>
+          <Typography variant="h4" fontWeight="bold" textAlign="center" mb={3} fontSize={20}>
             Login
           </Typography>
 
