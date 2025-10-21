@@ -5,10 +5,8 @@
   gap: 185px;
   position: relative;
   overflow: hidden;
-  
-  background-size: cover; /* scales nicely */
-  background-repeat: no-repeat;
   background: url("./assets/images/home/newbg.png") center center;
+  background-size: cover;
 }
 
 // .body::before {

@@ -5,6 +5,7 @@
     background-position: center -500px;
     background-repeat: repeat-x;
     
+    
     .form-section {
         width: 47%;
         .form-box {
@@ -13,6 +14,19 @@
             border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             background: rgba(255, 255, 255, 0.5);
+            position: relative;
+            .back-btn{
+                position: absolute;
+                position: absolute;
+                top: 20px;
+                left: 15px;
+                transform: rotate(180deg);
+                cursor: pointer;
+                &.ar{
+                    transform: rotate(360deg);
+                    right: 20px;
+                }
+            }
         }
     }
 

@@ -3,6 +3,7 @@ import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useCheckIfPathIncludes } from "../../shared.service";
 
 const Navbar = () => {
   // const [active, setActive] = useState("home");
@@ -47,6 +48,8 @@ const Navbar = () => {
     { name: "English", label: "English" },
   ];
 
+  const isHide = useCheckIfPathIncludes(['/login']);
+
   const handleLogoClick = () => {
     navigate("/");
   };
@@ -56,7 +59,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav>
+    <nav className={isHide?"isHide":""}>
       <div className="logo" onClick={handleLogoClick}>
         <img src={logo} alt="Logo" />
       </div>

@@ -7,15 +7,15 @@ import image from "../../../../assets/images/user-management/login/image.png";
 import type { FormData } from "../../../../core/models/Login";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import backImage from "../../../../assets/icon/user-management/back.svg"
 function Login() {
-  const { t } = useTranslation();
-
+  const { t , i18n} = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+  const isArabic:boolean = i18n.language === 'ar';
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,11 +30,15 @@ function Login() {
   const handleSignupClick = () => {
     navigate("/user-management/signup");
   };
+  const handleBackClick = () => {
+    navigate("/");
+  };
 
   return (
     <div className="login-container">
       <div className="form-section d-flex flex-column justify-content-center align-items-end">
         <div className="form-box p-5">
+          <img src={backImage} alt="" onClick={handleBackClick} className={`back-btn ${isArabic?'ar':''}`}/>
           <Typography
             variant="h4"
             fontWeight="bold"
