@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Tooltip, Typography } from "@mui/material";
 import { categoryImg, searchIcon } from "../../assets";
 import "./Store.scss";
 import { useNavigate } from "react-router-dom";
@@ -56,9 +56,15 @@ const Store = () => {
             </Box>
 
             <CardContent className="card-content">
-              <Typography variant="h6" className="card-title" fontWeight={700}>
-                {category}
-              </Typography>
+              <Tooltip title={category}>
+                <Typography
+                  variant="h6"
+                  className="card-title"
+                  fontWeight={700}
+                >
+                  {category}
+                </Typography>
+              </Tooltip>
             </CardContent>
           </Card>
         ))}

@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import "./Signup.scss";
+import { useTranslation } from "react-i18next";
 
 interface FormData {
   firstName: string;
@@ -26,6 +27,8 @@ interface FormData {
 }
 
 function Signup() {
+  const { t, i18n } = useTranslation();
+
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -39,7 +42,8 @@ function Signup() {
   });
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,14 +56,16 @@ function Signup() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Signup Data:", formData);
-    // Later: Add validation & API logic here
   };
 
   return (
-    <div className="signup-container d-flex justify-content-center align-items-center">
+    <div
+      className="signup-container d-flex justify-content-center align-items-center"
+      dir={i18n.language === "ar" ? "rtl" : "ltr"}
+    >
       <div className="signup-box p-5">
         <Typography variant="h4" fontWeight="bold" textAlign="center" mb={4}>
-          Sign up
+          {t("signup.title")}
         </Typography>
 
         <form onSubmit={handleSubmit}>
@@ -67,25 +73,23 @@ function Signup() {
           <div className="row">
             <div className="col-md-6 mb-3">
               <TextField
-                label="First Name"
+                label={t("signup.firstName")}
                 name="firstName"
                 fullWidth
                 value={formData.firstName}
                 onChange={handleChange}
-                InputProps={{
-                  style: {
-                    borderColor: "green",
-                  },
-                }}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
               />
             </div>
             <div className="col-md-6 mb-3">
               <TextField
-                label="Last Name"
+                label={t("signup.lastName")}
                 name="lastName"
                 fullWidth
                 value={formData.lastName}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
               />
             </div>
           </div>
@@ -101,22 +105,23 @@ function Signup() {
                   width: "100%",
                   height: "56px",
                   borderRadius: "4px",
-                  border: "1px solid #ccc",
                 }}
                 inputClass="phone-input"
               />
             </div>
             <div className="col-md-6 mb-3">
               <TextField
-                label="Email"
+                label={t("signup.email")}
                 name="email"
                 fullWidth
                 value={formData.email}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
                 error={!formData.email.includes("@") && formData.email !== ""}
                 helperText={
                   !formData.email.includes("@") && formData.email !== ""
-                    ? "Invalid email"
+                    ? t("signup.invalidEmail")
                     : ""
                 }
               />
@@ -127,16 +132,20 @@ function Signup() {
           <div className="row">
             <div className="col-md-6 mb-3">
               <TextField
-                label="Password"
+                label={t("signup.password")}
                 name="password"
                 type={showPassword ? "text" : "password"}
                 fullWidth
                 value={formData.password}
                 onChange={handleChange}
-                error={formData.password.length > 0 && formData.password.length < 6}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
+                error={
+                  formData.password.length > 0 && formData.password.length < 6
+                }
                 helperText={
                   formData.password.length > 0 && formData.password.length < 6
-                    ? "Minimum 6 characters"
+                    ? t("signup.minPassword")
                     : ""
                 }
                 InputProps={{
@@ -156,12 +165,14 @@ function Signup() {
 
             <div className="col-md-6 mb-3">
               <TextField
-                label="Confirm Password"
+                label={t("signup.confirmPassword")}
                 name="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
                 fullWidth
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
                 error={
                   formData.confirmPassword.length > 0 &&
                   formData.confirmPassword !== formData.password
@@ -169,17 +180,23 @@ function Signup() {
                 helperText={
                   formData.confirmPassword.length > 0 &&
                   formData.confirmPassword !== formData.password
-                    ? "Passwords do not match"
+                    ? t("signup.passwordMismatch")
                     : ""
                 }
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
                       <IconButton
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        onClick={() =>
+                          setShowConfirmPassword(!showConfirmPassword)
+                        }
                         edge="end"
                       >
-                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                        {showConfirmPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -193,44 +210,58 @@ function Signup() {
             <div className="col-md-4 mb-3">
               <TextField
                 select
-                label="The University"
+                label={t("signup.university")}
                 name="university"
                 fullWidth
                 value={formData.university}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
               >
-                <MenuItem value="Cairo University">Cairo University</MenuItem>
-                <MenuItem value="Ain Shams">Ain Shams</MenuItem>
+                <MenuItem value="Cairo University">
+                  {t("signup.universities.cairo")}
+                </MenuItem>
+                <MenuItem value="Ain Shams">
+                  {t("signup.universities.ainShams")}
+                </MenuItem>
               </TextField>
             </div>
 
             <div className="col-md-4 mb-3">
               <TextField
                 select
-                label="College"
+                label={t("signup.college")}
                 name="college"
                 fullWidth
                 value={formData.college}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
               >
-                <MenuItem value="Engineering">Engineering</MenuItem>
-                <MenuItem value="Business">Business</MenuItem>
+                <MenuItem value="Engineering">
+                  {t("signup.colleges.engineering")}
+                </MenuItem>
+                <MenuItem value="Business">
+                  {t("signup.colleges.business")}
+                </MenuItem>
               </TextField>
             </div>
 
             <div className="col-md-4 mb-3">
               <TextField
                 select
-                label="Academic Year"
+                label={t("signup.academicYear")}
                 name="academicYear"
                 fullWidth
                 value={formData.academicYear}
                 onChange={handleChange}
+                dir={i18n.language === "ar" ? "rtl" : "ltr"}
+                inputProps={{ dir: i18n.language === "ar" ? "rtl" : "ltr" }}
               >
-                <MenuItem value="1st Year">1st Year</MenuItem>
-                <MenuItem value="2nd Year">2nd Year</MenuItem>
-                <MenuItem value="3rd Year">3rd Year</MenuItem>
-                <MenuItem value="4th Year">4th Year</MenuItem>
+                <MenuItem value="1st Year">{t("signup.years.1")}</MenuItem>
+                <MenuItem value="2nd Year">{t("signup.years.2")}</MenuItem>
+                <MenuItem value="3rd Year">{t("signup.years.3")}</MenuItem>
+                <MenuItem value="4th Year">{t("signup.years.4")}</MenuItem>
               </TextField>
             </div>
           </div>
@@ -242,7 +273,7 @@ function Signup() {
             fullWidth
             className="signup-btn mt-3"
           >
-            Sign up
+            {t("signup.signupBtn")}
           </Button>
         </form>
       </div>
