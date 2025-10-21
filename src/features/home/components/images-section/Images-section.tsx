@@ -23,7 +23,7 @@ function ImagesSection() {
       </div>
 
       <div className="right-section">
- <h1 style={{ textAlign: i18n.language === "en" ? "left" : "right" }}>
+        <h1 style={{ textAlign: i18n.language === "en" ? "left" : "right" }}>
           {t("home.question1")}
         </h1>
         <p>{t("home.paragraph5")}</p>

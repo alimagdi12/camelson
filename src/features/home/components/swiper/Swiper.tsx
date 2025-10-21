@@ -75,7 +75,7 @@ const Carousel = () => {
           const scale = isActive ? 1 : 0.8;
           const opacity = isActive ? 1 : 0.6;
           const cardWidth = isActive ? 502 : 400;
-          const cardHeight = isActive ? 690 : 550;
+          const cardHeight = isActive ? 550 : 600;
 
           return (
             <Card
@@ -83,9 +83,7 @@ const Carousel = () => {
               className="carousel-card"
               onClick={() => handleCardClick(index)}
               style={{
-                transform: `translateX(${
-                  position * (350)
-                }px) scale(${scale})`,
+                transform: `translateX(${position * 350}px) scale(${scale})`,
                 opacity,
                 zIndex: isActive ? 2 : 1,
                 width: "20%",

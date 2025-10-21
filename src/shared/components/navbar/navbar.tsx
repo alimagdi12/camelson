@@ -2,7 +2,7 @@ import "./navbar.scss";
 import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { href, Link, useLocation, useNavigate } from "react-router-dom";
+import {  Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   // const [active, setActive] = useState("home");
@@ -38,7 +38,7 @@ const Navbar = () => {
     { name: "story", label: t("navbar.story"), href: "#" },
     { name: "features", label: t("navbar.features"), href: "#" },
     { name: "plans", label: t("navbar.plans"), href: "#plans" },
-    { name: "store", label: t("navbar.store"), href: "store" },
+    { name: "store", label: t("navbar.store"), href: "/store" },
   ];
   const location = useLocation();
 
@@ -67,7 +67,7 @@ const Navbar = () => {
             {links.map((link, index) => {
               const isActive =
                 location.pathname === link.href ||
-                location.pathname.startsWith(link.href + "/" || "#");
+                location.pathname.startsWith(link.href +"/" );
 
               return (
                 <li key={link.name}>
