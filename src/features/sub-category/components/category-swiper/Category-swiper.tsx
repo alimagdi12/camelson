@@ -39,7 +39,7 @@ const CategorySwiper = () => {
             <div className="divider"></div>
 
             <div className="info-section">
-              <h3>{cat.title}</h3>
+              <h3 data-title={cat.title}>{cat.title}</h3>
               <p>{cat.items} items</p>
             </div>
           </SwiperSlide>
