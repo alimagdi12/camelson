@@ -9,13 +9,13 @@ const Home = () => {
   return (
     <div className="home-container">
       <Banner />
-      <PharoahLine/>
+      <PharoahLine />
       <div className="body">
         <Aboutus />
-        <ImagesSection/>
-        <PharoahLine/>
-        <CustomSwiper/>
-        <Packages/>
+        <ImagesSection />
+        <PharoahLine />
+        <CustomSwiper />
+        <Packages />
       </div>
     </div>
   );

@@ -1,0 +1,20 @@
+.body {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 185px;
+  position: relative;
+  overflow: hidden;
+  
+  background-size: cover; /* scales nicely */
+  background-repeat: no-repeat;
+  background: url("./assets/images/home/newbg.png") center center;
+}
+
+// .body::before {
+//   content: "";
+//   position: absolute;
+//   inset: 0;
+//   background-color: rgba(201, 195, 195, 0.562); /* Adjust transparency */
+//   z-index: 0; /* keeps it behind content */
+// }

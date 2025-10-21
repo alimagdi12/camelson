@@ -1,16 +1,10 @@
-.user-management-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 185px;
-    position: relative;
-    overflow: hidden;
+.user-management-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 185px;
+  position: relative;
+  overflow: hidden;
 
-    background-image: 
-      url('../../assets/images/home/home-gradiant.png');
-      background-position: center -500px;
-      background-size: cover;
-
-
-    background-repeat: repeat-x;
+  margin-top: 110px;
 }

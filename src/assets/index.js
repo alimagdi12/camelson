@@ -15,7 +15,6 @@ import categoryImg from "./images/store/categoryImg.png";
 import searchIcon from "./icon/store/search.png";
 
 import gradImage from "./images/completeData/gradimage.png";
-import newBg from "./images/home/newbg.jpg";
 export {
   logo,
   lang,
@@ -32,5 +31,5 @@ export {
   categoryImg,
   searchIcon,
   gradImage,
-  newBg,
+  
 };
