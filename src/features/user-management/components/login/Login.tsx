@@ -6,8 +6,11 @@ import "./Login.scss";
 import image from "../../../../assets/images/user-management/login/image.png";
 import type { FormData } from "../../../../core/models/Login";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function Login() {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
@@ -32,13 +35,19 @@ function Login() {
     <div className="login-container">
       <div className="form-section d-flex flex-column justify-content-center align-items-end">
         <div className="form-box p-5">
-          <Typography variant="h4" fontWeight="bold" textAlign="center" mb={3} fontSize={20}>
-            Login
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            mb={3}
+            fontSize={20}
+          >
+            {t("login.title")}
           </Typography>
 
           <form onSubmit={handleSubmit}>
             <TextField
-              label="Email"
+              label={t("login.email")}
               name="email"
               type="email"
               value={formData.email}
@@ -48,7 +57,7 @@ function Login() {
               className="mb-3"
             />
             <TextField
-              label="Password"
+              label={t("login.password")}
               name="password"
               type="password"
               value={formData.password}
@@ -64,7 +73,7 @@ function Login() {
               fullWidth
               className="login-btn mb-3"
             >
-              Login
+              {t("login.loginBtn")}
             </Button>
 
             <button
@@ -73,7 +82,7 @@ function Login() {
               onClick={() => navigate("/complete-data")}
             >
               <img src={GoogleIcon} alt="Google Icon" />
-              Google
+              {t("login.googleBtn")}
             </button>
           </form>
 
@@ -83,9 +92,9 @@ function Login() {
             mt={3}
             className="register-text"
           >
-            Don't Have Account{" "}
+            {t("login.noAccount")}{" "}
             <span className="register-link" onClick={handleSignupClick}>
-              Register
+              {t("login.register")}
             </span>
           </Typography>
         </div>

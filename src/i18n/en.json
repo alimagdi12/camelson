@@ -32,18 +32,56 @@
         "23 July Street - Farhoud Tower, 3rd Floor"
       ]
     }
-  }
-,
-   "compdata": {
+  },
+  "compdata": {
     "title": "Complete the data",
     "university": "University",
     "college": "College",
     "phone": "Phone number",
     "year": "Academic year",
     "confirm": "Confirm"
-  }
-  ,
+  },
   "search": {
     "search": "Search"
+  },
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "loginBtn": "Login",
+    "googleBtn": "Login with Google",
+    "noAccount": "Don't have an account?",
+    "register": "Register"
+  },
+
+  "signup": {
+    "title": "Sign Up",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "invalidEmail": "Invalid email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "minPassword": "Minimum 6 characters",
+    "passwordMismatch": "Passwords do not match",
+    "university": "University",
+    "college": "College",
+    "academicYear": "Academic Year",
+    "signupBtn": "Sign Up",
+    "universities": {
+      "cairo": "Cairo University",
+      "ainShams": "Ain Shams University"
+    },
+    "colleges": {
+      "engineering": "Engineering",
+      "business": "Business"
+    },
+    "years": {
+      "1": "1st Year",
+      "2": "2nd Year",
+      "3": "3rd Year",
+      "4": "4th Year"
+    }
   }
 }
