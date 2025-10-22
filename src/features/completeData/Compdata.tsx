@@ -2,8 +2,6 @@ import "./compdata.scss";
 import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
-
-import gradImage from "../../assets/images/completeData/gradimage.png";
 import PharoahLine from "../../shared/components/pharoah-line/Pharoah-line";
 import { useTranslation } from "react-i18next";
 
@@ -49,9 +47,6 @@ const Compdata = () => {
           </div>
 
           <button className="confirm-btn">{t("compdata.confirm")}</button>
-        </div>
-        <div className="img-box">
-          <img src={gradImage} alt="" />
         </div>
       </div>
       <PharoahLine />
