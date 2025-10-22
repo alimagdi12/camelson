@@ -22,7 +22,14 @@ function ImagesSection() {
         <img src={underImage} alt="pharoah" className="lower-image" />
       </div>
 
-      <div className="right-section">
+      <div 
+        className="right-section"
+        style={{ 
+          textAlign: i18n.language === "en" ? "left" : "right",
+          right: i18n.language === "ar" ? "auto" : "5%",
+          left: i18n.language === "ar" ? "5%" : "auto"
+        }}
+      >
         <h1 style={{ textAlign: i18n.language === "en" ? "left" : "right" }}>
           {t("home.question1")}
         </h1>

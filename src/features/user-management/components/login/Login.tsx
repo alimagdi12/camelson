@@ -36,18 +36,24 @@ function Login() {
 
   return (
     <div className="login-container">
+      <div className="back-section d-flex align-items-center gap-3">
+        <button className="back-btn d-flex gap-3" onClick={handleBackClick}>
+          <p>
+          Go back home
+          </p>
+          <img
+            src={backImage}
+            alt=""
+            className={`back-icon ${isArabic ? "ar" : ""}`}
+          />
+        </button>
+      </div>
       {" "}
       <div className="image-section">
         <img src={loginImage} alt="login" />
       </div>
       <div className="form-section d-flex flex-column justify-content-center  ">
         <div className="form-box p-5">
-          <img
-            src={backImage}
-            alt=""
-            onClick={handleBackClick}
-            className={`back-btn ${isArabic ? "ar" : ""}`}
-          />
           <Typography
             variant="h4"
             fontWeight="bold"

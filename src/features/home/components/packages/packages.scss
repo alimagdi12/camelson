@@ -196,6 +196,8 @@
     flex-direction: column;
     gap: 8px;
     padding: 8px;
+    width: 85%;
+    max-width: 90%;
   }
 
   .tab-button {
@@ -209,8 +211,8 @@
   }
 
   .package-card {
-    min-width: 280px;
-    max-width: 320px;
+    width: 85%;
+    max-width: 90%;
   }
 }
 
@@ -221,6 +223,7 @@
 
   .package-tabs {
     padding: 6px;
+    width: 75%;
   }
 
   .tab-button {

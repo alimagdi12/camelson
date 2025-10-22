@@ -91,6 +91,7 @@
   }
 
   @media (max-width: 992px) {
+    padding: 0;
     &::before {
       display: none;
     }

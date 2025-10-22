@@ -1,3 +1,4 @@
+// navbar.scss
 nav {
   width: 100%;
   height: 160px;
@@ -7,6 +8,7 @@ nav {
   justify-content: center;
   align-items: center;
   position: absolute;
+  z-index: 5;
 
   &.isHide{
     display: none;
@@ -22,8 +24,8 @@ nav {
 }
 .logo img {
   margin-bottom: 5px;
-  width: 120px;
-  height: 111px;
+  width: 99px;
+  height: 95px;
 }
 
 .nav-links {
@@ -114,8 +116,8 @@ nav {
   align-items: center;
   justify-content: center;
 
-  width: 64px;
-  height: 64px;
+  width: 45px;
+  height: 45px;
 
   background: #ffbc01;
   border: none;
@@ -124,8 +126,8 @@ nav {
   transition: all 0.3s ease;
 
   img {
-    width: 44px;
-    height: 44px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
   }
 
@@ -224,7 +226,7 @@ nav {
 // ##################
 .signin {
   width: 144px;
-  height: 64px;
+  height: 45px;
   padding: 0.5rem 1rem;
   border: 2px solid #ffbe3b; /* visible golden border */
   border-radius: 10px;
@@ -239,4 +241,258 @@ nav {
 .signin:hover {
   background-color: transparent;
   color: #ffbe3b;
+}
+
+// Mobile Menu Toggle Button
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+
+  span {
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+}
+
+
+[dir="rtl"] .mobile-menu-toggle {
+  right: 90%;
+}
+
+// Mobile Sidebar
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100vh;
+  background: #000;
+  z-index: 1002;
+  transition: right 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+
+  &.open {
+    right: 0;
+  }
+
+  .mobile-sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #333;
+
+    .logo {
+      img {
+        width: 70px;
+        height: 67px;
+      }
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #ffbe3b;
+      }
+    }
+  }
+
+  .mobile-sidebar-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .mobile-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+
+      li {
+        margin-bottom: 20px;
+
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 18px;
+          transition: color 0.3s ease;
+          display: block;
+          padding: 10px 0;
+
+          &.active {
+            color: #ffd700;
+          }
+
+          &:hover {
+            color: #ffbe3b;
+          }
+        }
+      }
+    }
+
+    .mobile-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: auto;
+
+      .mobile-language-section {
+        .mobile-language {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 100%;
+          padding: 12px;
+          background: #ffbc01;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+          }
+
+          span {
+            color: #000;
+            font-weight: 600;
+            font-size: 14px;
+          }
+
+          &:hover {
+            background: #ffbe3b;
+          }
+        }
+      }
+
+      .mobile-signin {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ffbe3b;
+        border-radius: 10px;
+        color: #fff;
+        font-weight: 600;
+        background-color: #ffbe3b;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: transparent;
+          color: #ffbe3b;
+        }
+      }
+    }
+  }
+}
+
+// Mobile Sidebar Overlay
+.mobile-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+// Responsive Styles
+@media (max-width: 1024px) {
+  .nav-links {
+    grid-column: 4 / span 5;
+  }
+
+  .buttons {
+    grid-column: 9 / span 3;
+  }
+}
+
+@media (max-width: 1100px) {
+  nav {
+    height: 100px;
+    grid-template-columns: 1fr auto 1fr;
+    position: absolute;
+
+    .logo {
+      grid-column: 1;
+      justify-content: start;
+      margin-left: 20px;
+
+      img {
+        width: 70px;
+        height: 67px;
+      }
+    }
+
+    .nav-links,
+    .buttons {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: flex;
+    }
+  }
+
+  /* ✅ RTL override outside of nav */
+  [dir="rtl"] nav .logo {
+    margin-left: 0;
+    margin-right: 20px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .mobile-sidebar {
+    width: 280px;
+  }
+
+  nav {
+    .logo {
+      img {
+        width: 60px;
+        height: 57px;
+      }
+    }
+  }
 }
