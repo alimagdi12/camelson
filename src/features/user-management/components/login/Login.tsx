@@ -3,19 +3,19 @@ import { TextField, Button, Typography } from "@mui/material";
 import GoogleIcon from "../../../../assets/icon/user-management/login/google-icon.svg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Login.scss";
-import image from "../../../../assets/images/user-management/login/image.png";
+import loginImage from "../../../../assets/images/user-management/login/loginImage.png";
 import type { FormData } from "../../../../core/models/Login";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import backImage from "../../../../assets/icon/user-management/back.svg"
+import backImage from "../../../../assets/icon/user-management/back.svg";
 function Login() {
-  const { t , i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
-  const isArabic:boolean = i18n.language === 'ar';
+  const isArabic: boolean = i18n.language === "ar";
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,9 +36,18 @@ function Login() {
 
   return (
     <div className="login-container">
-      <div className="form-section d-flex flex-column justify-content-center align-items-end">
+      {" "}
+      <div className="image-section">
+        <img src={loginImage} alt="login" />
+      </div>
+      <div className="form-section d-flex flex-column justify-content-center  ">
         <div className="form-box p-5">
-          <img src={backImage} alt="" onClick={handleBackClick} className={`back-btn ${isArabic?'ar':''}`}/>
+          <img
+            src={backImage}
+            alt=""
+            onClick={handleBackClick}
+            className={`back-btn ${isArabic ? "ar" : ""}`}
+          />
           <Typography
             variant="h4"
             fontWeight="bold"
@@ -102,11 +111,7 @@ function Login() {
             </span>
           </Typography>
         </div>
-      </div>
-
-      <div className="image-section">
-        <img src={image} alt="login" />
-      </div>
+      </div>{" "}
     </div>
   );
 }

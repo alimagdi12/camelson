@@ -1,6 +1,6 @@
 .banner {
   background-image: url('../../../../assets/images/home/banner.png');
-  height: 90vh;
+  height: 900px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +26,7 @@
   align-items: center;
   justify-content: center;
   gap: 80px;
+  margin-top: 120px;
 
   p {
     font-weight: 800;

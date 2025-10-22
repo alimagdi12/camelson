@@ -7,7 +7,7 @@ const Aboutus = () => {
 
   return (
     <>
-      <div className="about-section">
+      <div className="about-section" id="ourstory">
         <h1 style={{ textAlign: i18n.language === "en" ? "left" : "right" }}>
           {t("home.question1")}
         </h1>

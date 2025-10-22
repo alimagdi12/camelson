@@ -36,8 +36,8 @@ const Navbar = () => {
 
   const links = [
     { name: "home", label: t("navbar.home"), href: "/" },
-    { name: "story", label: t("navbar.story"), href: "#" },
-    { name: "features", label: t("navbar.features"), href: "#" },
+    { name: "story", label: t("navbar.story"), href: "#ourstory" },
+    { name: "features", label: t("navbar.features"), href: "#features" },
     { name: "plans", label: t("navbar.plans"), href: "#plans" },
     { name: "store", label: t("navbar.store"), href: "/store" },
   ];
@@ -48,7 +48,7 @@ const Navbar = () => {
     { name: "English", label: "English" },
   ];
 
-  const isHide = useCheckIfPathIncludes(['/login']);
+  const isHide = useCheckIfPathIncludes(["/login"]);
 
   const handleLogoClick = () => {
     navigate("/");
@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={isHide?"isHide":""}>
+    <nav className={isHide ? "isHide" : ""}>
       <div className="logo" onClick={handleLogoClick}>
         <img src={logo} alt="Logo" />
       </div>
@@ -75,18 +75,33 @@ const Navbar = () => {
               const isHome = location.pathname === "/";
               return (
                 <li key={link.name}>
-                  <Link
-                    to={link.href}
-                    className={`${isActive ? "active" : ""} ${
-                      !isHome ? "font-color" : ""
-                    }`}
+                  <a
+                    href={link.href}
+                    onClick={(e) => {
+                      if (link.href.startsWith("#")) {
+                        e.preventDefault();
+                        const target = document.querySelector(link.href);
+                        if (target) {
+                          target.scrollIntoView({ behavior: "smooth" });
+                        }
+                      } else {
+                        navigate(link.href);
+                      }
+                    }}
+                    className={`${
+                      location.pathname === link.href ? "active" : ""
+                    } ${location.pathname !== "/" ? "font-color" : ""}`}
                   >
                     {link.label}
-                  </Link>
+                  </a>
 
-                  {/*  if active show eclipse else toggle */}
                   <img
-                    src={isActive ? eclipse : toggle}
+                    src={
+                      location.pathname === link.href ||
+                      location.pathname.startsWith(link.href + "/")
+                        ? eclipse
+                        : toggle
+                    }
                     alt={link.label}
                     className="link-icon"
                   />
@@ -124,7 +139,7 @@ const Navbar = () => {
         </div>
 
         <button className="signin" onClick={handleSignInClick}>
-          {t("signin") || "Sign In"}
+          {t("login.title") || "Sign In"}
         </button>
       </div>
     </nav>

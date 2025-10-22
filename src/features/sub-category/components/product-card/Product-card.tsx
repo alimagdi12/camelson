@@ -4,7 +4,7 @@ import "./Product-card.scss";
 import CustomDialog from "../../../../shared/components/custom-dialog/Custom-dialog";
 import { Stack, Typography } from "@mui/material";
 import ProductDetails from "../product-details/Product-details";
-
+import swiperimage from "../../../../assets/images/store/swiper2.jpg";
 interface ProductCardProps {
   image: string;
   name: string;
@@ -13,7 +13,7 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
   const [open, setOpen] = useState(false);
-  const description = "hello from text"
+  const description = "hello from text";
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleAddToCart = () => {
@@ -23,10 +23,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
 
   return (
     <>
-      <div className="product-card"  onClick={handleOpen}>
-        {/* <div className="product-image">
-          <img src={image} alt={name} />
-        </div> */}
+      <div className="product-card" onClick={handleOpen}>
+        <div className="product-image">
+          <img src={swiperimage} alt={name} />
+        </div>
 
         <div className="product-footer">
           <h3>{name}</h3>
@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
           <ProductDetails
             open={open}
             onClose={() => setOpen(false)}
-            image={[image,image,image,image,image]}
+            image={[image, image, image, image, image]}
             name={name}
             price={price}
             description={description}

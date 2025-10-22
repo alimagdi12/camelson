@@ -79,6 +79,7 @@ const Carousel = () => {
 
           return (
             <Card
+            id="features"
               key={item.id}
               className="carousel-card"
               onClick={() => handleCardClick(index)}

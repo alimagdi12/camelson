@@ -1,5 +1,5 @@
 .signup-container {
-  height: 650px;
+  height: 100vh;
 
   .signup-box {
     width: 80%;
@@ -7,6 +7,7 @@
     background: rgba(255, 255, 255, 0.5);
     border-radius: 15px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    margin-top: 50px;
   }
 }
 
@@ -83,8 +84,8 @@ select {
 // }
 
 [dir="rtl"] .react-tel-input .flag-dropdown {
-//   border-right: none !important;
-//   border-left: 1px solid black !important;
+  //   border-right: none !important;
+  //   border-left: 1px solid black !important;
 }
 
 /* RTL support for helper text */
@@ -94,6 +95,6 @@ select {
 
 /* RTL support for select dropdown icon */
 [dir="rtl"] .MuiSvgIcon-root.MuiSelect-icon {
-  right: 220px ;
-//   left: auto !important;
+  right: 220px;
+  //   left: auto !important;
 }
