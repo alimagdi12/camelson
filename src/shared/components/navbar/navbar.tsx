@@ -13,7 +13,6 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-
   // Change layout direction based on selected language
   useEffect(() => {
     document.body.dir = i18n.language === "ar" ? "rtl" : "ltr";
@@ -99,7 +98,7 @@ const Navbar = () => {
                 <a
                   href="/"
                   onClick={(e) => handleScrollOrNavigate(e, "/")}
-                  className={`${location.pathname === "/" ? "active" : ""}`}
+                  className={`${location.pathname === "/" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                 >
                   {t("navbar.home")}
                 </a>
@@ -117,7 +116,7 @@ const Navbar = () => {
                 <a
                   href="#ourstory"
                   onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
-                  className={`${location.hash === "#ourstory" ? "active" : ""} nowrap`}
+                  className={`${location.hash === "#ourstory" ? "active" : ""} nowrap ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                 >
                   {t("navbar.story")}
                 </a>
@@ -135,6 +134,7 @@ const Navbar = () => {
                 <a
                   href="#features"
                   onClick={(e) => handleScrollOrNavigate(e, "#features")}
+                  className={`${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                 >
                   {t("navbar.features")}
                 </a>
@@ -152,7 +152,8 @@ const Navbar = () => {
                 <a
                   href="#plans"
                   onClick={(e) => handleScrollOrNavigate(e, "#plans")}
-                >
+                  className={`${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                >   
                   {t("navbar.plans")}
                 </a>
                 <img
@@ -168,7 +169,7 @@ const Navbar = () => {
               <li>
                 <a
                   onClick={(e) => handleScrollOrNavigate(e, "/store")}
-                  className={`${location.pathname === "/store" ? "active" : ""} `}
+                  className={`${location.pathname === "/store" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                 >
                   {t("navbar.store")}
                 </a>
