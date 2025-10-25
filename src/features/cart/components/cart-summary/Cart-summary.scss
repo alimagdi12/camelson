@@ -1,5 +1,265 @@
-.cart-summary{
-    grid-column: span 4;
-    height: 300px;
+.cart-summary {
+  grid-column: span 4;
+
+  .summary-card {
     background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+
+    .summary-title {
+      color: #f7a600;
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .coupon-section {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+
+      .coupon-input {
+        flex: 1;
+
+        .MuiOutlinedInput-root {
+          border-radius: 8px;
+          height: 48px;
+
+          fieldset {
+            border-color: #ddd;
+          }
+
+          &:hover fieldset {
+            border-color: #f7a600;
+          }
+
+          &.Mui-focused fieldset {
+            border-color: #f7a600;
+          }
+        }
+
+        .MuiInputBase-input {
+          font-size: 14px;
+          padding: 12px 16px;
+        }
+      }
+
+      .apply-btn {
+        background-color: #f7a600;
+        color: white;
+        border-radius: 8px;
+        padding: 12px 20px;
+        min-width: 80px;
+        height: 48px;
+        font-weight: 600;
+
+        &:hover {
+          background-color: #e69500;
+        }
+      }
+    }
+
+    .summary-details {
+      margin-bottom: 24px;
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+
+        &.total-row {
+          margin-bottom: 0;
+        }
+
+        .summary-label {
+          color: #333;
+          font-size: 14px;
+          font-weight: 500;
+
+          &.total-label {
+            font-size: 16px;
+            font-weight: 700;
+          }
+        }
+
+        .summary-value {
+          color: #333;
+          font-size: 14px;
+          font-weight: 600;
+
+          &.free {
+            color: #f7a600;
+            font-weight: 700;
+          }
+
+          &.total-value {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f7a600;
+          }
+        }
+      }
+
+      .summary-divider {
+        margin: 16px 0;
+        border-color: #e0e0e0;
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .checkout-btn,
+      .continue-btn {
+        background-color: #f7a600;
+        color: white;
+        border-radius: 8px;
+        padding: 16px;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: none;
+        height: 48px;
+
+        &:hover {
+          background-color: #e69500;
+        }
+      }
+
+      .continue-btn {
+        background-color: #f7a600;
+
+        &:hover {
+          background-color: #e69500;
+        }
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .cart-summary {
+    grid-column: 1 / -1;
+    margin-top: 20px;
+
+    .summary-card {
+      position: static;
+      padding: 20px;
+
+      .summary-title {
+        font-size: 18px;
+        margin-bottom: 16px;
+      }
+
+      .coupon-section {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+
+        .apply-btn {
+          width: 100%;
+          min-width: auto;
+        }
+      }
+
+      .summary-details {
+        margin-bottom: 20px;
+
+        .summary-row {
+          margin-bottom: 10px;
+
+          .summary-label,
+          .summary-value {
+            font-size: 13px;
+          }
+
+          .summary-label.total-label,
+          .summary-value.total-value {
+            font-size: 15px;
+          }
+        }
+      }
+
+      .action-buttons {
+        gap: 10px;
+
+        .checkout-btn,
+        .continue-btn {
+          padding: 14px;
+          font-size: 15px;
+          height: 44px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .cart-summary {
+    .summary-card {
+      padding: 16px;
+
+      .summary-title {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+
+      .coupon-section {
+        margin-bottom: 16px;
+
+        .coupon-input {
+          .MuiOutlinedInput-root {
+            height: 44px;
+          }
+
+          .MuiInputBase-input {
+            font-size: 13px;
+            padding: 10px 14px;
+          }
+        }
+
+        .apply-btn {
+          height: 44px;
+          font-size: 14px;
+        }
+      }
+
+      .summary-details {
+        margin-bottom: 16px;
+
+        .summary-row {
+          margin-bottom: 8px;
+
+          .summary-label,
+          .summary-value {
+            font-size: 12px;
+          }
+
+          .summary-label.total-label,
+          .summary-value.total-value {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .action-buttons {
+        gap: 8px;
+
+        .checkout-btn,
+        .continue-btn {
+          padding: 12px;
+          font-size: 14px;
+          height: 40px;
+        }
+      }
+    }
+  }
 }
