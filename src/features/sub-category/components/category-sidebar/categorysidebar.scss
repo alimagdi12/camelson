@@ -1,0 +1,13 @@
+.container {
+  background: #fff;
+  border-radius: 16px;
+  min-height: 500px;
+  grid-column: 9 / span 4;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+  .container {
+    display: none;
+  }
+}

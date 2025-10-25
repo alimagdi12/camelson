@@ -121,16 +121,17 @@ const Navbar = () => {
                         if (link.href.startsWith("#")) {
                           e.preventDefault();
                           const target = document.querySelector(link.href);
-                          if (target) {
+                          if (target)
                             target.scrollIntoView({ behavior: "smooth" });
-                          }
                         } else {
                           navigate(link.href);
                         }
                       }}
                       className={`${
                         location.pathname === link.href ? "active" : ""
-                      } ${location.pathname !== "/" ? "font-color" : ""}`}
+                      } ${location.pathname !== "/" ? "font-color" : ""} ${
+                        link.name === "story" ? "nowrap" : ""
+                      }`}
                     >
                       {link.label}
                     </a>
@@ -162,7 +163,9 @@ const Navbar = () => {
               <img src={lang} alt="Language" />
             </button>
 
-            <div className={`language-dropdown ${isLanguageOpen ? "open" : ""}`}>
+            <div
+              className={`language-dropdown ${isLanguageOpen ? "open" : ""}`}
+            >
               {languages.map((language) => (
                 <div
                   key={language.name}
@@ -200,7 +203,10 @@ const Navbar = () => {
           <div className="logo" onClick={handleLogoClick}>
             <img src={logo} alt="Logo" />
           </div>
-          <button className="close-button" onClick={() => setIsMobileMenuOpen(false)}>
+          <button
+            className="close-button"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             ×
           </button>
         </div>
@@ -238,7 +244,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Sidebar Overlay */}
-      <div 
+      <div
         className={`mobile-sidebar-overlay ${isMobileMenuOpen ? "open" : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>

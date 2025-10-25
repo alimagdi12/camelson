@@ -1,20 +1,21 @@
 .product-grid-container {
   width: 100%;
-  padding: 40px 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   margin-bottom: 150px;
+  grid-column: 1 / span 8;
 
   .search-bar {
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
     background: #fff;
     border-radius: 10px;
     padding: 8px 15px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    gap: 10px;
 
     i {
       color: #f7a600;
@@ -23,17 +24,21 @@
     }
 
     input {
-      width: 100%;
+      flex: 1;
       border: none;
       outline: none;
       font-size: 16px;
+    }
+
+    .mobile-filter-btn {
+      display: none; // Hidden by default (when sidebar is visible)
     }
   }
 
   .product-grid {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     justify-items: center;
   }
@@ -42,8 +47,17 @@
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
   .product-grid-container {
+    grid-column: 1 / span 12;
+
+    .search-bar {
+      .mobile-filter-btn {
+        display: flex !important; // Show filter button when sidebar is hidden
+        flex-shrink: 0;
+      }
+    }
+
     .product-grid {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
   }
@@ -51,18 +65,27 @@
 
 @media (max-width: 768px) {
   .product-grid-container {
+    grid-column: 1 / -1;
+    width: 100%;
+
     .product-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      width: 100%;
     }
   }
 }
 
 @media (max-width: 480px) {
   .product-grid-container {
+    grid-column: 1 / -1;
+    width: 100%;
+
     .product-grid {
-      grid-template-columns: repeat(1, 1fr);
+      grid-template-columns: 1fr; /* one column */
       gap: 15px;
+      width: 100%;
+      justify-items: stretch; /* ensures the card fills horizontally */
     }
   }
 }
