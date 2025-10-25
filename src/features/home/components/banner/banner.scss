@@ -1,5 +1,5 @@
 .banner {
-  background-image: url('../../../../assets/images/home/banner.png');
+  background-image: url("../../../../assets/images/home/banner.png");
   height: 900px;
   display: flex;
   align-items: center;
@@ -47,7 +47,15 @@
     border-radius: 16px;
     background-color: #ffbe3b;
     color: white;
-    border: none;
+
+    border: 2px solid #ffbe3b;
+
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: transparent;
+      color: #ffbe3b;
+      border: 2px solid #ffbe3b;
+    }
   }
 }
 
