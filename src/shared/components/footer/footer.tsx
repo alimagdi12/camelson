@@ -1,6 +1,7 @@
 import "./footer.scss";
-import { logo, facebook, linkedin, tiktok, whatsapp } from "../../../assets";
+import { facebook, linkedin, tiktok, whatsapp } from "../../../assets";
 import { useCheckIfPathIncludes } from "../../shared.service";
+import logo from '../../../assets/images/home/logo-rounded.png'
 const Footer = () => {
   const shouldHideFooter = useCheckIfPathIncludes([
     "/user-management",

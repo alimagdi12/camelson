@@ -9,22 +9,36 @@ nav {
   align-items: center;
   position: absolute;
   z-index: 5;
-
+  
   &.isHide{
     display: none;
   }
 }
 
+.inner-section{
+  grid-column: 2 / span 10;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
 .logo {
-  grid-column: 2 / span 2;
+  grid-column: 1 / span 2;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: start;
   cursor: pointer;
+  padding: 0 0 0 20px;
+  
+  &.ar{
+    padding: 0 20px 0 0;
+  }
 }
 .logo img {
-  margin-bottom: 5px;
-  width: 99px;
   height: 95px;
 }
 
@@ -60,12 +74,17 @@ nav {
         position: relative;
 
         a {
-          color: #fff;
+          color: black;
           text-decoration: none;
-          font-weight: 500;
           transition: color 0.3s ease;
-          font-weight: 700;
-          font-size: 24px;
+          font-weight: 500;
+          font-style: Medium;
+          font-size: 18px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          text-align: center;
+          vertical-align: bottom;
+
           &.active {
             color: #ffd700;
           }
@@ -99,10 +118,9 @@ nav {
 
 // ################3
 .buttons {
-  grid-column: 10 / span 2;
-
+  grid-column: 10 / span 3;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
   z-index: 1000;
