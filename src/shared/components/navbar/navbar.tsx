@@ -117,7 +117,7 @@ const Navbar = () => {
                 <a
                   href="#ourstory"
                   onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
-                  className={`${location.hash === "#ourstory" ? "active" : ""}`}
+                  className={`${location.hash === "#ourstory" ? "active" : ""} nowrap`}
                 >
                   {t("navbar.story")}
                 </a>
@@ -248,8 +248,8 @@ const Navbar = () => {
             <li>
               <a href="/" onClick={(e) => handleScrollOrNavigate(e, "/")}>{t("navbar.home")}</a>
             </li>
-            <li >
-              <a href="#ourstory" onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}>
+            <li>
+              <a href="#ourstory" onClick={(e) => handleScrollOrNavigate(e, "#ourstory")} className="hello">
                 {t("navbar.story")}
               </a>
             </li>

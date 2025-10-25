@@ -1,0 +1,9 @@
+.cart-container{
+    width: 70%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: 180px auto 0;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
