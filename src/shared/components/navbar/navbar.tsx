@@ -2,17 +2,17 @@ import "./navbar.scss";
 import { logo, lang, toggle, eclipse } from "../../../assets";
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCheckIfPathIncludes } from "../../shared.service";
 
 const Navbar = () => {
-  // const [active, setActive] = useState("home");
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
 
   // Change layout direction based on selected language
   useEffect(() => {
@@ -43,7 +43,7 @@ const Navbar = () => {
     setSelectedLanguage(newLang === "ar" ? "Arabic" : "English");
   };
 
-  const handleLanguageSelect = (language: any) => {
+  const handleLanguageSelect = (language: string) => {
     if (language === "Arabic") {
       i18n.changeLanguage("ar");
       setSelectedLanguage("Arabic");
@@ -53,20 +53,6 @@ const Navbar = () => {
     }
     setIsLanguageOpen(false);
   };
-
-  const links = [
-    { name: "home", label: t("navbar.home"), href: "/" },
-    { name: "story", label: t("navbar.story"), href: "#ourstory" },
-    { name: "features", label: t("navbar.features"), href: "#features" },
-    { name: "plans", label: t("navbar.plans"), href: "#plans" },
-    { name: "store", label: t("navbar.store"), href: "/store" },
-  ];
-  const location = useLocation();
-
-  const languages = [
-    { name: "Arabic", label: "العربية" },
-    { name: "English", label: "English" },
-  ];
 
   const isHide = useCheckIfPathIncludes(["/login"]);
 
@@ -80,22 +66,23 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const handleLinkClick = (link: any, e: React.MouseEvent) => {
-    if (link.href.startsWith("#")) {
-      e.preventDefault();
-      const target = document.querySelector(link.href);
+  const handleScrollOrNavigate = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
+    if (href.startsWith("#")) {
+      const target = document.querySelector(href);
       if (target) {
         target.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      navigate(link.href);
+      navigate(href);
     }
     setIsMobileMenuOpen(false);
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const languages = [
+    { name: "Arabic", label: "العربية" },
+    { name: "English", label: "English" },
+  ];
 
   return (
     <>
@@ -107,51 +94,98 @@ const Navbar = () => {
         <div className="nav-links">
           <div className="section">
             <ul className="links">
-              {links.map((link, index) => {
-                const isActive =
-                  location.pathname === link.href ||
-                  location.pathname.startsWith(link.href + "/");
+              {/* Home */}
+              <li>
+                <a
+                  href="/"
+                  onClick={(e) => handleScrollOrNavigate(e, "/")}
+                  className={`${location.pathname === "/" ? "active" : ""}`}
+                >
+                  {t("navbar.home")}
+                </a>
+                <img
+                  src={
+                    location.pathname === "/" ? eclipse : toggle
+                  }
+                  alt="Home"
+                  className="link-icon"
+                />
+              </li>
 
-                const isHome = location.pathname === "/";
-                return (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      onClick={(e) => {
-                        if (link.href.startsWith("#")) {
-                          e.preventDefault();
-                          const target = document.querySelector(link.href);
-                          if (target) {
-                            target.scrollIntoView({ behavior: "smooth" });
-                          }
-                        } else {
-                          navigate(link.href);
-                        }
-                      }}
-                      className={`${
-                        location.pathname === link.href ? "active" : ""
-                      } ${location.pathname !== "/" ? "font-color" : ""}`}
-                    >
-                      {link.label}
-                    </a>
+              {/* Our Story */}
+              <li>
+                <a
+                  href="#ourstory"
+                  onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
+                  className={`${location.hash === "#ourstory" ? "active" : ""}`}
+                >
+                  {t("navbar.story")}
+                </a>
+                <img
+                  src={
+                    location.hash === "#ourstory" ? eclipse : toggle
+                  }
+                  alt="Story"
+                  className="link-icon"
+                />
+              </li>
 
-                    <img
-                      src={
-                        location.pathname === link.href ||
-                        location.pathname.startsWith(link.href + "/")
-                          ? eclipse
-                          : toggle
-                      }
-                      alt={link.label}
-                      className="link-icon"
-                    />
-                  </li>
-                );
-              })}
+              {/* Features */}
+              <li>
+                <a
+                  href="#features"
+                  onClick={(e) => handleScrollOrNavigate(e, "#features")}
+                >
+                  {t("navbar.features")}
+                </a>
+                <img
+                  src={
+                    location.hash === "#features" ? eclipse : toggle
+                  }
+                  alt="Features"
+                  className="link-icon"
+                />
+              </li>
+
+              {/* Plans */}
+              <li>
+                <a
+                  href="#plans"
+                  onClick={(e) => handleScrollOrNavigate(e, "#plans")}
+                >
+                  {t("navbar.plans")}
+                </a>
+                <img
+                  src={
+                    location.hash === "#plans" ? eclipse : toggle
+                  }
+                  alt="Plans"
+                  className="link-icon"
+                />
+              </li>
+
+              {/* Store */}
+              <li>
+                <a
+                  href="/store"
+                  onClick={(e) => handleScrollOrNavigate(e, "/store")}
+                  className={`${location.pathname === "/store" ? "active" : ""}`}
+                >
+                  {t("navbar.store")}
+                </a>
+                <img
+                  src={
+                    location.pathname === "/store" ? eclipse : toggle
+                  }
+                  alt="Store"
+                  className="link-icon"
+                />
+              </li>
             </ul>
           </div>
         </div>
 
+        {/* Buttons */}
         <div className="buttons">
           <div
             className="language-container"
@@ -183,8 +217,8 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
-        <div className="mobile-menu-toggle" onClick={toggleMobileMenu}>
+        {/* Mobile Menu Toggle */}
+        <div className="mobile-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           <span></span>
           <span></span>
           <span></span>
@@ -207,19 +241,29 @@ const Navbar = () => {
 
         <div className="mobile-sidebar-content">
           <ul className="mobile-links">
-            {links.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(link, e)}
-                  className={`${
-                    location.pathname === link.href ? "active" : ""
-                  }`}
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            <li>
+              <a href="/" onClick={(e) => handleScrollOrNavigate(e, "/")}>{t("navbar.home")}</a>
+            </li>
+            <li>
+              <a href="#ourstory" onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}>
+                {t("navbar.story")}
+              </a>
+            </li>
+            <li>
+              <a href="#features" onClick={(e) => handleScrollOrNavigate(e, "#features")}>
+                {t("navbar.features")}
+              </a>
+            </li>
+            <li>
+              <a href="#plans" onClick={(e) => handleScrollOrNavigate(e, "#plans")}>
+                {t("navbar.plans")}
+              </a>
+            </li>
+            <li>
+              <a href="/store" onClick={(e) => handleScrollOrNavigate(e, "/store")}>
+                {t("navbar.store")}
+              </a>
+            </li>
           </ul>
 
           <div className="mobile-buttons">
@@ -237,8 +281,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Sidebar Overlay */}
-      <div 
+      {/* Overlay */}
+      <div
         className={`mobile-sidebar-overlay ${isMobileMenuOpen ? "open" : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>
