@@ -1,10 +1,28 @@
 .sub-category-container{
     position: relative;
     overflow: hidden;
+    margin:0 auto;
     margin-top: 160px;
+    display: grid;
+    grid-template-columns: repeat(12 , 1fr);
+    gap: 50px;
+    padding: 0 130px;
+
 }
 
 
 .css-16htz67-MuiPaper-root-MuiDialog-paper{
     max-width: 624px !important;
+}
+
+
+
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+.sub-category-container {
+   gap: 30px;
+    padding: 0 5px;
+
+  }
 }

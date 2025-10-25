@@ -167,9 +167,8 @@ const Navbar = () => {
               {/* Store */}
               <li>
                 <a
-                  href="/store"
                   onClick={(e) => handleScrollOrNavigate(e, "/store")}
-                  className={`${location.pathname === "/store" ? "active" : ""}`}
+                  className={`${location.pathname === "/store" ? "active" : ""} `}
                 >
                   {t("navbar.store")}
                 </a>
@@ -196,7 +195,9 @@ const Navbar = () => {
               <img src={lang} alt="Language" />
             </button>
 
-            <div className={`language-dropdown ${isLanguageOpen ? "open" : ""}`}>
+            <div
+              className={`language-dropdown ${isLanguageOpen ? "open" : ""}`}
+            >
               {languages.map((language) => (
                 <div
                   key={language.name}
@@ -234,7 +235,10 @@ const Navbar = () => {
           <div className="logo" onClick={handleLogoClick}>
             <img src={logo} alt="Logo" />
           </div>
-          <button className="close-button" onClick={() => setIsMobileMenuOpen(false)}>
+          <button
+            className="close-button"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             ×
           </button>
         </div>
@@ -244,7 +248,7 @@ const Navbar = () => {
             <li>
               <a href="/" onClick={(e) => handleScrollOrNavigate(e, "/")}>{t("navbar.home")}</a>
             </li>
-            <li>
+            <li >
               <a href="#ourstory" onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}>
                 {t("navbar.story")}
               </a>
@@ -281,7 +285,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Overlay */}
+      {/* Mobile Sidebar Overlay */}
       <div
         className={`mobile-sidebar-overlay ${isMobileMenuOpen ? "open" : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
