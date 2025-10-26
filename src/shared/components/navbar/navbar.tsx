@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import { logo, lang, toggle, eclipse } from "../../../assets";
+import { logo, lang, toggle, eclipse, cart } from "../../../assets";
 import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -194,9 +194,11 @@ const Navbar = () => {
               onMouseEnter={() => setIsLanguageOpen(true)}
               onMouseLeave={() => setIsLanguageOpen(false)}
             >
-              <button className="language" onClick={toggleLanguage}>
-                <img src={lang} alt="Language" />
-              </button>
+              <div className="d-flex gap-3">
+                <button className="language" onClick={toggleLanguage}>
+                  <img src={lang} alt="Language" />
+                </button>
+              </div>
 
               <div
                 className={`language-dropdown ${isLanguageOpen ? "open" : ""}`}
