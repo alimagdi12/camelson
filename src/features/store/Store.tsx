@@ -27,15 +27,23 @@ const Store = () => {
 
   return (
     <div className="store-container">
-      <div className="searchbar">
-        <div className="search-icon">
-          <img src={searchIcon} alt="" />
+      <div className="store-header d-flex w-100 gap-3">
+        <div className="searchbar">
+          <div className="search-icon">
+            <img src={searchIcon} alt="" />
+          </div>
+          <input
+            type="text"
+            placeholder={t("search.search")}
+            className="search-input"
+          />
         </div>
-        <input
-          type="text"
-          placeholder={t("search.search")}
-          className="search-input"
-        />
+        <div className="categories-bar">
+          <p className="categories-header">Most Searched :</p>
+          {['Medical clothing', 'Medical devices', 'Sterilization materials', 'Sterilization materials'].map((item, index) => (
+            <p className="category" key={index}>{item}</p>
+          ))}
+        </div>
       </div>
 
       <div className="categories">

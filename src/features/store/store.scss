@@ -1,27 +1,31 @@
 .store-container {
-  width: 100%;
+  width: 90%;
   padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 50px;
-
+  margin: auto;
   height: 100%;
 
   margin-bottom: 40px;
   margin-top: 150px;
 }
 
+.store-header{
+  padding: 0 2% 0 2%;
+}
+
 .searchbar {
-  width: 60%;
+  width: 50%;
   display: flex;
   align-items: center;
   padding: 8px 16px;
   gap: 16px;
-  height: 72px;
+  height: 40px;
   background: #ffffff;
-  border: 1px solid #000;
-  border-radius: 16px;
+  border: 1px solid rgba(255, 190, 59, 1);
+  border-radius: 8px;
 }
 
 .search-icon {
@@ -34,7 +38,7 @@
 
 .search-input {
   flex: 1;
-  height: 40px;
+  height: 100%;
   font-size: 24px;
   color: #bdbdbd;
   border: none;
@@ -45,6 +49,41 @@
 
 .search-input::placeholder {
   color: #bdbdbd;
+}
+
+.categories-bar {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(255, 190, 59, 1);
+  border-radius: 8px;
+
+  .categories-header{
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(255, 190, 59, 1);
+    white-space: nowrap;
+  }
+
+  .category{
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: rgba(130, 130, 130, 1);
+  }
+
+  p{
+    margin-bottom: 0;
+  }
 }
 
 /* ✅ Categories grid */
@@ -87,13 +126,14 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(255, 190, 59, 0.9);
+  background: white;
   padding: 16px 8px;
   border-radius: 0 0 16px 16px;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  border-top: 1px solid rgba(189, 189, 189, 1);
 }
 
 /* ensure MUI card content default padding doesn't add gaps */

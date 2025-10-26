@@ -186,7 +186,6 @@ const Navbar = () => {
               </ul>
             </div>
           </div>
-
           {/* Buttons */}
           <div className="buttons">
             <div
@@ -205,12 +204,12 @@ const Navbar = () => {
               >
                 {languages.map((language) => (
                   <div
-                    key={language.name}
-                    className={`language-option ${
+                  key={language.name}
+                  className={`language-option ${
                       selectedLanguage === language.name ? "selected" : ""
                     }`}
                     onClick={() => handleLanguageSelect(language.name)}
-                  >
+                    >
                     <span className="language-text">{language.label}</span>
                     <div className="language-divider"></div>
                   </div>
@@ -218,6 +217,9 @@ const Navbar = () => {
               </div>
             </div>
 
+            <button className="cart" >
+              <img src={cart} alt="cart" />
+            </button>
             <button className="signin" onClick={handleSignInClick}>
               {t("login.title") || "Sign In"}
             </button>
