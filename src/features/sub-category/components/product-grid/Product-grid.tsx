@@ -26,7 +26,7 @@ import labcoat from "../../../../assets/images/store/swiper.jpg";
 
 const products = Array(10).fill({
   image: labcoat,
-  name: "Lab Coat",
+  name: "oxygen device",
   price: "200EGP",
 });
 

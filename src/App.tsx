@@ -9,6 +9,7 @@ import SubCategory from "./features/sub-category/Sub-category";
 import Compdata from "./features/completeData/Compdata";
 import RequestData from "./features/requestData/RequestData";
 import Cart from "./features/cart/Cart";
+import TrackingOrder from "./features/trackOrder/TrackingOrder";
 function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/user-management/:page" element={<UserManagement />} />
           <Route path="/request-data" element={<RequestData />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/track-your-order" element={<TrackingOrder />} />
         </Routes>
         <Footer />
       </div>

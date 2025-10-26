@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ShoppingCart } from "@mui/icons-material";
 import "./Product-card.scss";
 import CustomDialog from "../../../../shared/components/custom-dialog/Custom-dialog";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import ProductDetails from "../product-details/Product-details";
 import swiperimage from "../../../../assets/images/store/swiper2.jpg";
+import { addtocart, addedtocart } from "../../../../assets";
+
 interface ProductCardProps {
   image: string;
   name: string;
@@ -13,12 +14,20 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
   const [open, setOpen] = useState(false);
+  const [isAdded, setIsAdded] = useState(false); // track if added or not
   const description = "hello from text";
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const handleAddToCart = () => {
-    console.log(`Added ${name} to cart`);
-    setOpen(false);
+
+  const handleAddToCart = (e?: React.MouseEvent) => {
+    e?.stopPropagation(); // prevent opening dialog
+    setIsAdded((prev) => !prev); // toggle state
+    console.log(
+      `${!isAdded ? "Added" : "Removed"} ${name} ${
+        !isAdded ? "to" : "from"
+      } cart`
+    );
   };
 
   return (
@@ -29,13 +38,21 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
         </div>
 
         <div className="product-footer">
-          <h3>{name}</h3>
-          <p>{price}</p>
-          <button className="add-to-cart">
-            Add to cart <ShoppingCart fontSize="small" />
+          <div className="products-details">
+            <h3>{name}</h3>
+            <p>{price}</p>
+          </div>
+
+          <button
+            className={`add-to-cart ${isAdded ? "added" : ""}`}
+            onClick={handleAddToCart}
+          >
+            {isAdded ? "Added" : "Add to cart"}{" "}
+            <img src={isAdded ? addedtocart : addtocart} alt="" />
           </button>
         </div>
       </div>
+
       <CustomDialog
         open={open}
         title={name}
@@ -45,17 +62,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
         hideActions={true}
       >
         <Stack spacing={2} alignItems="center">
-          {/* <img
-            src={image}
-            alt={name}
-            style={{ width: "150px", borderRadius: "8px" }}
-          />
-          <Typography variant="body1">
-            { "No description available."}
-          </Typography>
-          <Typography variant="h6" color="primary">
-            {price}
-          </Typography> */}
           <ProductDetails
             open={open}
             onClose={() => setOpen(false)}
