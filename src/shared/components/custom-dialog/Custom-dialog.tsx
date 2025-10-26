@@ -10,7 +10,6 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import type { CustomDialogProps } from "../../../core/models/dialog";
 
-
 const CustomDialog: React.FC<CustomDialogProps> = ({
   open,
   title,

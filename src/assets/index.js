@@ -10,12 +10,16 @@ import tiktok from "./icon/home/tiktok.svg";
 import whatsapp from "./icon/home/whatsapp.svg";
 import correct from "./icon/home/correct.png";
 import swiperImg1 from "./images/home/siwperimg1.jpg";
-import cart from './icon/home/cart.svg'
+import cart from "./icon/home/cart.svg";
 import categoryImg from "./images/store/categoryImg.png";
 import searchIcon from "./icon/store/search.png";
 
 import gradImage from "./images/completeData/gradimage.png";
-import loginImage from "./images/user-management/login/loginImage.png"
+import loginImage from "./images/user-management/login/loginImage.png";
+
+import addtocart from "./icon/store/addtocart.svg";
+import addedtocart from "./icon/store/addedtocart.svg";
+
 export {
   logo,
   lang,
@@ -33,5 +37,7 @@ export {
   searchIcon,
   gradImage,
   loginImage,
-  cart
+  cart,
+  addtocart,
+  addedtocart,
 };
