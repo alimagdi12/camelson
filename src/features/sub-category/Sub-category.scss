@@ -1,22 +1,101 @@
-.sub-category-container{
-    position: relative;
-    overflow: hidden;
-    margin:0 auto;
-    margin-top: 160px;
-    display: grid;
-    grid-template-columns: repeat(12 , 1fr);
-    gap: 50px;
-    padding: 0 130px;
-
+.sub-category-container {
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 160px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 50px;
+  padding: 0 130px;
 }
 
-
-.css-16htz67-MuiPaper-root-MuiDialog-paper{
-    max-width: 624px !important;
+.main-content {
+  grid-column: 1 / span 8;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
+.content-display-container {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 30px;
 
+  .content-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
 
+    h2 {
+      color: #333;
+      font-size: 28px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  .content-body {
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      text-align: center;
+
+      h3 {
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #666;
+        font-size: 16px;
+      }
+    }
+
+    .simple-content {
+      .content-image {
+        text-align: center;
+        margin-bottom: 30px;
+
+        img {
+          max-width: 100%;
+          height: auto;
+          max-height: 300px;
+          border-radius: 12px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .content-text {
+        h3 {
+          color: #333;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+
+        p {
+          color: #555;
+          font-size: 16px;
+          line-height: 1.8;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.category-sidebar-container {
+  grid-column: 9 / span 4;
+}
+
+.css-16htz67-MuiPaper-root-MuiDialog-paper {
+  max-width: 624px !important;
+}
 
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
