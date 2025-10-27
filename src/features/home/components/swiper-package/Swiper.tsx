@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import "./swiper.scss";
-import { swiperImg1 } from "../../../../assets";
+import { gradImage } from "../../../../assets";
+
 
 const items = [
   {
@@ -93,7 +94,7 @@ const Carousel = () => {
             >
               <div className="card-background">
                 <img
-                  src={swiperImg1}
+                  src={gradImage}
                   alt="Background"
                   className="background-image"
                 />

@@ -20,9 +20,9 @@
 
 /* Responsive breakpoints */
 @media (max-width: 1024px) {
-.sub-category-container {
-   gap: 30px;
-    padding: 0 5px;
-
+  .sub-category-container {
+    gap: 30px;
+    padding: 0;
+    width: 90%;
   }
 }

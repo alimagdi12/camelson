@@ -4,7 +4,9 @@
     "store": "المتجر",
     "plans": "الخطط",
     "features": "المميزات",
-    "story": "قصتنا"
+    "story": "قصتنا",
+    "libraries":"المكتبات",
+    "blogs":"المدونات"
   },
   "home": {
     "question1": "هل منصة Osmosis مناسبة لتخصصي؟",

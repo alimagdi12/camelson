@@ -112,43 +112,54 @@ const Navbar = () => {
                     className="link-icon"
                   />
                 </li>
-
-                {/* Our Story */}
+                {/* Store */}
                 <li>
                   <a
-                    href="#ourstory"
-                    onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
-                    className={`${location.hash === "#ourstory" ? "active" : ""} nowrap ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    onClick={(e) => handleScrollOrNavigate(e, "/store")}
+                    className={`${location.pathname === "/store" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                   >
-                    {t("navbar.story")}
+                    {t("navbar.store")}
                   </a>
                   <img
                     src={
-                      location.hash === "#ourstory" ? eclipse : toggle
+                      location.pathname === "/store" ? eclipse : toggle
                     }
-                    alt="Story"
+                    alt="Store"
                     className="link-icon"
                   />
                 </li>
-
-                {/* Features */}
+                {/* Libraries */}
                 <li>
                   <a
-                    href="#features"
-                    onClick={(e) => handleScrollOrNavigate(e, "#features")}
-                    className={`${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    onClick={(e) => handleScrollOrNavigate(e, "/library")}
+                    className={`${location.pathname === "/library" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
                   >
-                    {t("navbar.features")}
+                    {t("navbar.libraries")}
                   </a>
                   <img
                     src={
-                      location.hash === "#features" ? eclipse : toggle
+                      location.pathname === "/library" ? eclipse : toggle
                     }
-                    alt="Features"
+                    alt="library"
                     className="link-icon"
                   />
                 </li>
-
+                {/* blogs */}
+                <li>
+                  <a
+                    onClick={(e) => handleScrollOrNavigate(e, "/blogs")}
+                    className={`${location.pathname === "/blogs" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                  >
+                    {t("navbar.blogs")}
+                  </a>
+                  <img
+                    src={
+                      location.pathname === "/blogs" ? eclipse : toggle
+                    }
+                    alt="blogs"
+                    className="link-icon"
+                  />
+                </li>
                 {/* Plans */}
                 <li>
                   <a
@@ -163,23 +174,6 @@ const Navbar = () => {
                       location.hash === "#plans" ? eclipse : toggle
                     }
                     alt="Plans"
-                    className="link-icon"
-                  />
-                </li>
-
-                {/* Store */}
-                <li>
-                  <a
-                    onClick={(e) => handleScrollOrNavigate(e, "/store")}
-                    className={`${location.pathname === "/store" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
-                  >
-                    {t("navbar.store")}
-                  </a>
-                  <img
-                    src={
-                      location.pathname === "/store" ? eclipse : toggle
-                    }
-                    alt="Store"
                     className="link-icon"
                   />
                 </li>
@@ -217,7 +211,7 @@ const Navbar = () => {
               </div>
             </div>
 
-            <button className="cart" >
+            <button className="cart" onClick={(e) => handleScrollOrNavigate(e, "/cart")}>
               <img src={cart} alt="cart" />
             </button>
             <button className="signin" onClick={handleSignInClick}>

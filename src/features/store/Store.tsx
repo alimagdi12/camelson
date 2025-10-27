@@ -1,12 +1,12 @@
-import { Box, Card, CardContent, Tooltip, Typography } from "@mui/material";
 import { categoryImg, searchIcon } from "../../assets";
 import "./Store.scss";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-
+import { usePageWidth } from "../../shared/shared.service";
+import CategoryCard from "../../shared/components/card/Card";
 const Store = () => {
   const navigate = useNavigate();
-
+  const { isMobile } = usePageWidth();
   const { t } = useTranslation();
   const categories: string[] = [
     "Electronics",
@@ -40,41 +40,44 @@ const Store = () => {
         </div>
         <div className="categories-bar">
           <p className="categories-header">Most Searched :</p>
-          {['Medical clothing', 'Medical devices', 'Sterilization materials', 'Sterilization materials'].map((item, index) => (
-            <p className="category" key={index}>{item}</p>
-          ))}
+          {
+            isMobile ? (
+              <select name="" id="">
+                {[
+                  "Medical clothing",
+                  "Medical devices",
+                  "Sterilization materials",
+                  "Sterilization materials",
+                ].map((item, index) => (
+                  <option className="category" key={index}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              [
+                "Medical clothing",
+                "Medical devices",
+                "Sterilization materials",
+                "Sterilization materials",
+              ].map((item, index) => (
+                <p className="category" key={index}>
+                  {item}
+                </p>
+              ))
+            )
+          }
         </div>
       </div>
 
       <div className="categories">
         {categories.map((category, index) => (
-          <Card
+          <CategoryCard
             key={index}
-            className="category-card"
-            elevation={4}
-            sx={{ borderRadius: "16px" }}
-            onClick={() => handleCardClick(category)}
-          >
-            <Box className="card-background">
-              <img
-                src={categoryImg}
-                alt={category}
-                className="background-image"
-              />
-            </Box>
-
-            <CardContent className="card-content">
-              <Tooltip title={category}>
-                <Typography
-                  variant="h6"
-                  className="card-title"
-                  fontWeight={700}
-                >
-                  {category}
-                </Typography>
-              </Tooltip>
-            </CardContent>
-          </Card>
+            title={category}
+            image={categoryImg}
+            onClick={handleCardClick}
+          />
         ))}
       </div>
     </div>

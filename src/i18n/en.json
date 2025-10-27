@@ -4,7 +4,9 @@
     "store": "Store",
     "plans": "Plans",
     "features": "Features",
-    "story": "Our Story"
+    "story": "Our Story",
+    "libraries":"Liberaries",
+    "blogs": "Blogs"
   },
 
   "home": {

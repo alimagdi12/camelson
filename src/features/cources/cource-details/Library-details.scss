@@ -1,0 +1,17 @@
+.library-details-container{
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12,1fr);
+    margin-top: 150px;
+
+    .library-details-content{
+        grid-column: 2/ span 7;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        justify-content: center;
+        width: 100%;
+        padding: 24px;
+        margin-bottom: 50px;
+    }
+}
