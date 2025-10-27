@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./categorysidebar.scss";
 import searchicon from "../../../assets/icon/store/searchicon.svg";
-import type {Category ,CategorySidebarProps,} from "../../../core/models/categorySidebar";
+import type {
+  Category,
+  CategorySidebarProps,
+} from "../../../core/models/categorySidebar";
 
 const CategorySidebar: React.FC<CategorySidebarProps> = ({
   title = "Subcategory",
@@ -54,9 +57,11 @@ const CategorySidebar: React.FC<CategorySidebarProps> = ({
             onClick={() => handleSelect(category)}
           >
             <div className="category-content">
-              <div className="category-image">
-                <img src={category.image} alt={category.title} />
-              </div>
+             {category.image && ( <div className="category-image">
+                
+                  <img src={category.image} alt={category.title} />
+               
+              </div> )}
               <div className="category-info">
                 <h4>{category.title}</h4>
                 <span>{category.items} items</span>
