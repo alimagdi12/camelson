@@ -10,6 +10,7 @@ import Compdata from "./features/completeData/Compdata";
 import RequestData from "./features/requestData/RequestData";
 import Cart from "./features/cart/Cart";
 import TrackingOrder from "./features/trackOrder/TrackingOrder";
+import Library from "./features/cources/library/Library";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ function App() {
           <Route path="/request-data" element={<RequestData />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/track-your-order" element={<TrackingOrder />} />
+          <Route path="/library" element={<Library />} />
         </Routes>
         <Footer />
       </div>
