@@ -11,24 +11,25 @@ import RequestData from "./features/requestData/RequestData";
 import Cart from "./features/cart/Cart";
 import TrackingOrder from "./features/trackOrder/TrackingOrder";
 import Library from "./features/cources/library/Library";
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="body">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/store/:sub-category" element={<SubCategory />} />
-          <Route path="/complete-data" element={<Compdata />} />
-          <Route path="/user-management/:page" element={<UserManagement />} />
-          <Route path="/request-data" element={<RequestData />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/track-your-order" element={<TrackingOrder />} />
-          <Route path="/library" element={<Library />} />
-        </Routes>
-        <Footer />
-      </div>
+        <div className="body">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/store" element={<Store />} />
+            <Route path="/store/:sub-category" element={<SubCategory />} />
+            <Route path="/complete-data" element={<Compdata />} />
+            <Route path="/user-management/:page" element={<UserManagement />} />
+            <Route path="/request-data" element={<RequestData />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/track-your-order" element={<TrackingOrder />} />
+            <Route path="/library" element={<Library />} />
+          </Routes>
+          <Footer />
+        </div>
     </BrowserRouter>
   );
 }

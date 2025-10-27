@@ -1,0 +1,170 @@
+.library-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 100%;
+  margin-top: 160px;
+  gap: 50px;
+  overflow: hidden;
+}
+
+/* ===== Sidebar ===== */
+.sidebar-wrapper {
+  grid-column: 2 / span 3; // starts at column 2, takes 3 columns
+}
+
+/* ===== Main Content ===== */
+.content-library {
+  grid-column: 5 / span 7; // starts right after sidebar, takes 7 columns
+  width: 100%;
+  background: #fff;
+  border-radius: 24px;
+  margin-bottom: 150px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  &.transparent-bg {
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* ===== Content (when category is selected) ===== */
+  .simple-content {
+    width: 100%;
+
+    /* ===== Tabs ===== */
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f5f5f5;
+      border-radius: 8px;
+      margin-bottom: 30px;
+      overflow: hidden;
+      
+      gap: 10px;
+
+      .tab {
+        flex: 1;
+        text-align: center;
+        padding: 12px 0;
+        cursor: pointer;
+        font-weight: 600;
+        color: #666;
+        background: #fff;
+        transition: all 0.3s ease;
+        
+    border-radius: 8px;
+
+        &:hover {
+          background: #fafafa;
+        }
+
+        &.active {
+          background: #ffbe3b;
+          color: #fff;
+        }
+      }
+    }
+
+    /* ===== Library Grid ===== */
+    .library {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 25px;
+
+      .library-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+
+        .card-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .card-title {
+          padding: 15px;
+          text-align: center;
+          font-size: 18px;
+          font-weight: 600;
+          color: #333;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
+/* ===== Placeholder when no category selected ===== */
+.library-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  img {
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 32px;
+    span {
+      color: #ffbe3b;
+    }
+  }
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+
+  p {
+    color: #666;
+    font-size: 16px;
+  }
+}
+
+/* ===== Responsive Breakpoints ===== */
+@media (max-width: 1024px) {
+  .library-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 40px;
+  }
+
+  .sidebar-wrapper,
+  .content-library {
+    width: 100%;
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .library-container {
+    padding: 0 20px;
+  }
+
+  .tabs .tab {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
