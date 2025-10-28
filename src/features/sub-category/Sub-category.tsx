@@ -1,26 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./Sub-category.scss";
 import ProductGrid from "./components/product-grid/Product-grid";
 import CategorySidebar from "../../shared/components/category-sidebar/CategorySidebar";
 import type { Content } from "../../core/models/sidebarContext";
+import { useSearchParams } from "react-router-dom";
+import { fetchCategoryById, type StoreCategory } from "../../shared/services/store.service";
 
 import lungImage from "../../assets/images/store/swiper2.jpg";
 
 function SubCategory() {
-  // Local state for selected category
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  const [content, setContent] = useState<Content | null>(null);
+  const [searchParams] = useSearchParams();
+  const categoryId = searchParams.get('categoryId') || '';
+  const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState<StoreCategory | null>(null);
+  const [selectedSubId, setSelectedSubId] = useState<string | null>(null);
+  const [gridSearch, setGridSearch] = useState("");
 
-  const categoryData = [
-    { id: 1, title: "The Heart", items: 99, image: lungImage },
-    { id: 2, title: "Lung", items: 35, image: lungImage },
-    { id: 3, title: "Stomach", items: 68, image: lungImage },
-    { id: 4, title: "Respiratory System", items: 25, image: lungImage },
-    { id: 5, title: "Nervous System", items: 50, image: lungImage },
-    { id: 6, title: "Circulatory System", items: 30, image: lungImage },
-  ];
-
-  // Content array for each category (same as Library)
+  // Legacy content kept but unused for store flow; safe to remove later
   const contentData: Record<number, Content[]> = {
     1: [
       // The Heart
@@ -215,36 +211,46 @@ function SubCategory() {
     return contentData[categoryId] || [];
   };
 
-  // Handle category selection
-  const handleCategorySelect = (category: {
-    id: number;
-    title: string;
-    items: number;
-    image: string;
-  }) => {
-    setSelectedCategory(category.id);
-
-    // Get the first content item from the array for this category
-    const categoryContent = getContentForCategory(category.id);
-
-    if (categoryContent.length > 0) {
-      setContent(categoryContent[0]); // Set first content item
-    }
+  // Sidebar selection maps to subcategory id
+  const handleSidebarSelect = (sub: { id: number; title: string; items: number; image: string; }) => {
+    setSelectedSubId(String(sub.id));
   };
 
-  // Auto-select default category on component mount
   useEffect(() => {
-    if (!selectedCategory && categoryData.length > 0) {
-      const defaultCategory =
-        categoryData.find((cat) => cat.id === 4) || categoryData[0];
-      setSelectedCategory(defaultCategory.id);
-      // Get the first content item from the array for this category
-      const categoryContent = getContentForCategory(defaultCategory.id);
-      if (categoryContent.length > 0) {
-        setContent(categoryContent[0]); // Set first content item
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await fetchCategoryById(categoryId);
+        if (mounted) {
+          setCategory(data ?? null);
+          const firstSub = data?.subCategories?.[0]?.id || null;
+          setSelectedSubId(firstSub);
+        }
+      } finally {
+        if (mounted) setLoading(false);
       }
-    }
-  }, []);
+    })();
+    return () => { mounted = false; };
+  }, [categoryId]);
+
+  const sidebarCategories = useMemo(() => {
+    return (category?.subCategories || []).map((s) => ({
+      id: Number.NaN, // component expects number; use a hashless fallback index mapping
+      title: s.name,
+      items: s.products?.length || 0,
+      image: lungImage,
+      _realId: s.id,
+    })) as any[];
+  }, [category]);
+
+  // Build products for current subcategory selection
+  const products = useMemo(() => {
+    const sub = category?.subCategories.find((s) => s.id === (selectedSubId || ''));
+    const list = sub?.products || [];
+    const q = gridSearch.trim().toLowerCase();
+    const filtered = q ? list.filter(p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)) : list;
+    return filtered.map(p => ({ image: p.images?.[0] || lungImage, name: p.name, price: `${p.price} EGP` }));
+  }, [category, selectedSubId, gridSearch]);
 
   // Render simple content
   const renderContent = () => {
@@ -274,19 +280,27 @@ function SubCategory() {
 
   return (
     <div className="sub-category-container">
-      {/* <CategorySwiper/> */}
-      
-        <ProductGrid />
+      {loading ? (
+        <div className="main-content"><p>Loading...</p></div>
+      ) : (
+        <ProductGrid products={products} onSearchChange={setGridSearch} />
+      )}
 
       <div className="category-sidebar-container">
-        <CategorySidebar
-          title="Medical Categories"
-          categories={categoryData}
-          defaultSelectedId={selectedCategory || 4}
-          onCategorySelect={handleCategorySelect}
+        {!loading && (
+          <CategorySidebar
+          title="Subcategory"
+          categories={sidebarCategories as any}
+          defaultSelectedId={undefined}
+          onCategorySelect={(c: any) => {
+            // original comp uses numeric ids; we pass through name match
+            const match = (category?.subCategories || []).find(s => s.name === c.title);
+            if (match) setSelectedSubId(match.id);
+          }}
           showSearch={true}
-          searchPlaceholder="Search category..."
+          searchPlaceholder="Search subcategory..."
         />
+        )}
       </div>
     </div>
   );

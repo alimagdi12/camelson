@@ -22,15 +22,14 @@ import {
   Close,
 } from "@mui/icons-material";
 
-import labcoat from "../../../../assets/images/store/swiper.jpg";
+type GridProduct = { image: string; name: string; price: string };
 
-const products = Array(10).fill({
-  image: labcoat,
-  name: "oxygen device",
-  price: "200EGP",
-});
+interface ProductGridProps {
+  products: GridProduct[];
+  onSearchChange?: (value: string) => void;
+}
 
-const ProductGrid = () => {
+const ProductGrid: React.FC<ProductGridProps> = ({ products, onSearchChange }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
@@ -68,7 +67,11 @@ const ProductGrid = () => {
     <div className="product-grid-container">
       <div className="search-bar">
         <i className="fas fa-search"></i>
-        <input type="text" placeholder="Search" />
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => onSearchChange?.(e.target.value)}
+        />
         <Button
           className="mobile-filter-btn"
           variant="contained"

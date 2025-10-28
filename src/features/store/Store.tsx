@@ -2,28 +2,47 @@ import { categoryImg, searchIcon } from "../../assets";
 import "./Store.scss";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useEffect, useMemo, useState } from "react";
 import { usePageWidth } from "../../shared/shared.service";
 import CategoryCard from "../../shared/components/card/Card";
+import { fetchStoreCategories, type StoreCategory } from "../../shared/services/store.service";
 const Store = () => {
   const navigate = useNavigate();
   const { isMobile } = usePageWidth();
   const { t } = useTranslation();
-  const categories: string[] = [
-    "Electronics",
-    "Fashion",
-    "Home",
-    "Books",
-    "labs",
-    "labs",
-    "labs",
-    "labs",
-    "labs",
-    "labs",
-  ];
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState<StoreCategory[]>([]);
+  const [search, setSearch] = useState("");
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
-  const handleCardClick = (category: string) => {
-    navigate(`/store/${category}`);
+  useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const data = await fetchStoreCategories();
+        if (mounted) setCategories(data);
+      } finally {
+        if (mounted) setLoading(false);
+      }
+    })();
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const handleCardClick = (categoryId: string) => {
+    navigate(`/store/sub-category?categoryId=${encodeURIComponent(categoryId)}`);
   };
+
+  const topFour = useMemo(() => categories.slice(0, 4), [categories]);
+  const shownCategories = useMemo(() => {
+    const base = activeFilter
+      ? categories.filter((c) => c.id === activeFilter)
+      : categories;
+    const q = search.trim().toLowerCase();
+    if (!q) return base;
+    return base.filter((c) => c.name.toLowerCase().includes(q));
+  }, [categories, search, activeFilter]);
 
   return (
     <div className="store-container">
@@ -36,49 +55,54 @@ const Store = () => {
             type="text"
             placeholder={t("search.search")}
             className="search-input"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
         <div className="categories-bar">
           <p className="categories-header">Most Searched :</p>
-          {
-            isMobile ? (
-              <select name="" id="">
-                {[
-                  "Medical clothing",
-                  "Medical devices",
-                  "Sterilization materials",
-                  "Sterilization materials",
-                ].map((item, index) => (
-                  <option className="category" key={index}>
-                    {item}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              [
-                "Medical clothing",
-                "Medical devices",
-                "Sterilization materials",
-                "Sterilization materials",
-              ].map((item, index) => (
-                <p className="category" key={index}>
-                  {item}
-                </p>
-              ))
-            )
-          }
+          {isMobile ? (
+            <select
+              name="top"
+              id="top"
+              onChange={(e) => setActiveFilter(e.target.value || null)}
+              value={activeFilter ?? ""}
+            >
+              <option value="">{t("search.search")}</option>
+              {topFour.map((c) => (
+                <option className="category" key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            topFour.map((c) => (
+              <p
+                className="category"
+                key={c.id}
+                onClick={() => setActiveFilter(c.id)}
+                style={{ cursor: "pointer" }}
+              >
+                {c.name}
+              </p>
+            ))
+          )}
         </div>
       </div>
 
       <div className="categories">
-        {categories.map((category, index) => (
-          <CategoryCard
-            key={index}
-            title={category}
-            image={categoryImg}
-            onClick={handleCardClick}
-          />
-        ))}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          shownCategories.map((category) => (
+            <CategoryCard
+              key={category.id}
+              title={category.name}
+              image={categoryImg}
+              onClick={() => handleCardClick(category.id)}
+            />
+          ))
+        )}
       </div>
     </div>
   );
