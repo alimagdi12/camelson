@@ -1,0 +1,6 @@
+@use "colors" as colors;
+
+$colors: (
+  gray: colors.$gray,
+  orange: colors.$orange
+);

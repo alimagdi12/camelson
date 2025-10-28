@@ -1,6 +1,8 @@
+@use '@styles/colors' as colors;
+@use 'sass:map';
 .footer {
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: map.get(colors.$gray, 'dark');
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1.4fr;
   align-items: start;

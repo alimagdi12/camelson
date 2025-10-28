@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@300;400;500;600;700&display=swap');
-@use "colors";
-@use "variables";
+@use "@styles/colors";
+@use "@styles/variables";
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Ek Mukta', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+
