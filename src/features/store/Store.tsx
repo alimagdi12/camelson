@@ -110,7 +110,7 @@ const Store = () => {
               <CategoryCard
                 key={category.id}
                 title={category.name}
-                image={categoryImg}
+                image={category.image}
                 onClick={() => handleCardClick(category.id)}
               />
             ))}

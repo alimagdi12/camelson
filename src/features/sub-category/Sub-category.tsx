@@ -47,7 +47,7 @@ function SubCategory() {
       id: idx + 1,
       title: s.name,
       items: s.products?.length || 0,
-      image: lungImage,
+      image: s.image || lungImage,
     }));
   }, [category]);
 
@@ -66,7 +66,7 @@ function SubCategory() {
         )
       : list;
     return filtered.map((p) => ({
-      image: p.images?.[0] || lungImage,
+      image: (p.images && p.images[0]) || lungImage,
       name: p.name,
       price: `${p.price} EGP`,
     }));

@@ -24,7 +24,7 @@
 .skeleton--card-text {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 40px;
 
   .line {
     @include skeleton-loader(100%, 14px, 8px);

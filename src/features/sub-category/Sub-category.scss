@@ -1,4 +1,4 @@
-@import "../../styles/utilities/skeleton-utils";
+@use "../../styles/utilities/skeleton-utils";
 
 .sub-category-container {
   position: relative;
@@ -121,4 +121,8 @@
     padding: 0;
     width: 90%;
   }
+}
+
+.line{
+  height: 23px;
 }

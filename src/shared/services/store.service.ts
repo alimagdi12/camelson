@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Vite will copy this asset and return a URL to it
 // so axios can fetch it like an API endpoint.
@@ -7,7 +7,7 @@ import axios from 'axios';
 // We rely on Vite static asset handling.
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore - vite's ?url import provides a string URL at runtime
-import dataUrl from '../../data/medical_categories.json?url';
+import dataUrl from "../../data/medical_categories.json?url";
 
 export type StoreProduct = {
   id: string;
@@ -33,19 +33,52 @@ export type StoreCategory = {
 
 export async function fetchStoreCategories(): Promise<StoreCategory[]> {
   const response = await axios.get<StoreCategory[]>(dataUrl, {
-    headers: { 'Accept': 'application/json' },
+    headers: { Accept: "application/json" },
   });
-  return response.data;
+  const categories = response.data || [];
+
+  const toMedicalUnsplash = (name: string, size: string = "800x600") => {
+    const query = encodeURIComponent(`medical, ${name}`);
+    return `https://source.unsplash.com/${size}/?${query}`;
+  };
+
+  const decorate = (cats: StoreCategory[]): StoreCategory[] => {
+    return cats.map((cat) => {
+      const subCategories = (cat.subCategories || []).map((sub) => {
+        const products = (sub.products || []).map((p) => {
+          const img = toMedicalUnsplash(p.name, "600x600");
+          return { ...p, images: [img] };
+        });
+        return {
+          ...sub,
+          image: toMedicalUnsplash(sub.name, "800x500"),
+          products,
+        };
+      });
+      return {
+        ...cat,
+        image: toMedicalUnsplash(cat.name, "1000x600"),
+        subCategories,
+      };
+    });
+  };
+
+  return decorate(categories);
 }
 
-export async function fetchCategoryById(categoryId: string): Promise<StoreCategory | undefined> {
+export async function fetchCategoryById(
+  categoryId: string
+): Promise<StoreCategory | undefined> {
   const categories = await fetchStoreCategories();
-  return categories.find(c => c.id === categoryId);
+  return categories.find((c) => c.id === categoryId);
 }
 
-export async function fetchSubCategoryById(categoryId: string, subCategoryId: string): Promise<StoreSubCategory | undefined> {
+export async function fetchSubCategoryById(
+  categoryId: string,
+  subCategoryId: string
+): Promise<StoreSubCategory | undefined> {
   const category = await fetchCategoryById(categoryId);
-  return category?.subCategories.find(s => s.id === subCategoryId);
+  return category?.subCategories.find((s) => s.id === subCategoryId);
 }
 
 export async function searchProducts(query: string): Promise<StoreProduct[]> {
@@ -55,7 +88,10 @@ export async function searchProducts(query: string): Promise<StoreProduct[]> {
   for (const cat of categories) {
     for (const sub of cat.subCategories) {
       for (const p of sub.products) {
-        if (p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)) {
+        if (
+          p.name.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q)
+        ) {
           results.push(p);
         }
       }
@@ -63,5 +99,3 @@ export async function searchProducts(query: string): Promise<StoreProduct[]> {
   }
   return results;
 }
-
-

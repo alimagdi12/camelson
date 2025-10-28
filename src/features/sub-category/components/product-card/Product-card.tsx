@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, name, price }) => {
     <>
       <div className="product-card" onClick={handleOpen}>
         <div className="product-image">
-          <img src={swiperimage} alt={name} />
+          <img src={image} alt={name} />
         </div>
 
         <div className="product-footer">
