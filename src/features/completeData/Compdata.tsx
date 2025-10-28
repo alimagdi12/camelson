@@ -1,9 +1,10 @@
 import "./compdata.scss";
-import React, { useState } from "react";
+import { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/bootstrap.css";
 import PharoahLine from "../../shared/components/pharoah-line/Pharoah-line";
 import { useTranslation } from "react-i18next";
+import loginImage from "../../assets/images/user-management/login/loginImage.png";
 
 const Compdata = () => {
   const [phone, setPhone] = useState<string>("");
@@ -12,6 +13,10 @@ const Compdata = () => {
   return (
     <>
       <div className="section-container">
+        {" "}
+        <div className="img-box">
+          <img src={loginImage} alt="" />
+        </div>
         <div className="input-box">
           <h1>{t("compdata.title")}</h1>
           <div className="form-grid">
