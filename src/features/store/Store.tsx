@@ -5,7 +5,10 @@ import { useTranslation } from "react-i18next";
 import { useEffect, useMemo, useState } from "react";
 import { usePageWidth } from "../../shared/shared.service";
 import CategoryCard from "../../shared/components/card/Card";
-import { fetchStoreCategories, type StoreCategory } from "../../shared/services/store.service";
+import {
+  fetchStoreCategories,
+  type StoreCategory,
+} from "../../shared/services/store.service";
 const Store = () => {
   const navigate = useNavigate();
   const { isMobile } = usePageWidth();
@@ -31,7 +34,9 @@ const Store = () => {
   }, []);
 
   const handleCardClick = (categoryId: string) => {
-    navigate(`/store/sub-category?categoryId=${encodeURIComponent(categoryId)}`);
+    navigate(
+      `/store/sub-category?categoryId=${encodeURIComponent(categoryId)}`
+    );
   };
 
   const topFour = useMemo(() => categories.slice(0, 4), [categories]);
@@ -91,18 +96,24 @@ const Store = () => {
       </div>
 
       <div className="categories">
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          shownCategories.map((category) => (
-            <CategoryCard
-              key={category.id}
-              title={category.name}
-              image={categoryImg}
-              onClick={() => handleCardClick(category.id)}
-            />
-          ))
-        )}
+        {loading
+          ? Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="skeleton--card">
+                <div className="skeleton--card-img"></div>
+                <div className="skeleton--card-text">
+                  <span className="line"></span>
+                  <span className="line--sm"></span>
+                </div>
+              </div>
+            ))
+          : shownCategories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                title={category.name}
+                image={categoryImg}
+                onClick={() => handleCardClick(category.id)}
+              />
+            ))}
       </div>
     </div>
   );

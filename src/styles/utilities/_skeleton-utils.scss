@@ -1,0 +1,36 @@
+@use "../mixins/skeleton" as *;
+
+// Base skeleton block
+.skeleton {
+  @include skeleton-loader();
+  display: block;
+}
+
+// Card placeholder
+.skeleton--card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+// Image area inside a card
+.skeleton--card-img {
+  @include skeleton-loader(100%, 180px, 12px);
+}
+
+// Text lines inside a card
+.skeleton--card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .line {
+    @include skeleton-loader(100%, 14px, 8px);
+  }
+
+  .line--sm {
+    @include skeleton-loader(60%, 12px, 8px);
+  }
+}
