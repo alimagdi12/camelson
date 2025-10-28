@@ -53,7 +53,7 @@ const Navbar = () => {
     setIsLanguageOpen(false);
   };
 
-  const isHide = useCheckIfPathIncludes(["/login"]);
+  const isHide = useCheckIfPathIncludes(["/login", "/otp"]);
 
   const handleLogoClick = () => {
     navigate("/");
@@ -87,7 +87,6 @@ const Navbar = () => {
     <>
       <nav className={isHide ? "isHide" : ""}>
         <div className="inner-section">
-
           <div className="logo" onClick={handleLogoClick}>
             <img src={logo} alt="Logo" />
           </div>
@@ -100,14 +99,21 @@ const Navbar = () => {
                   <a
                     href="/"
                     onClick={(e) => handleScrollOrNavigate(e, "/")}
-                    className={`${location.pathname === "/" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    className={`${location.pathname === "/" ? "active" : ""} ${
+                      useCheckIfPathIncludes([
+                        "complete-data",
+                        "signup",
+                        "store",
+                        "cart",
+                      ])
+                        ? "ar"
+                        : ""
+                    }`}
                   >
                     {t("navbar.home")}
                   </a>
                   <img
-                    src={
-                      location.pathname === "/" ? eclipse : toggle
-                    }
+                    src={location.pathname === "/" ? eclipse : toggle}
                     alt="Home"
                     className="link-icon"
                   />
@@ -116,14 +122,23 @@ const Navbar = () => {
                 <li>
                   <a
                     onClick={(e) => handleScrollOrNavigate(e, "/store")}
-                    className={`${location.pathname === "/store" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    className={`${
+                      location.pathname === "/store" ? "active" : ""
+                    } ${
+                      useCheckIfPathIncludes([
+                        "complete-data",
+                        "signup",
+                        "store",
+                        "cart",
+                      ])
+                        ? "ar"
+                        : ""
+                    }`}
                   >
                     {t("navbar.store")}
                   </a>
                   <img
-                    src={
-                      location.pathname === "/store" ? eclipse : toggle
-                    }
+                    src={location.pathname === "/store" ? eclipse : toggle}
                     alt="Store"
                     className="link-icon"
                   />
@@ -132,14 +147,23 @@ const Navbar = () => {
                 <li>
                   <a
                     onClick={(e) => handleScrollOrNavigate(e, "/library")}
-                    className={`${location.pathname === "/library" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    className={`${
+                      location.pathname === "/library" ? "active" : ""
+                    } ${
+                      useCheckIfPathIncludes([
+                        "complete-data",
+                        "signup",
+                        "store",
+                        "cart",
+                      ])
+                        ? "ar"
+                        : ""
+                    }`}
                   >
                     {t("navbar.libraries")}
                   </a>
                   <img
-                    src={
-                      location.pathname === "/library" ? eclipse : toggle
-                    }
+                    src={location.pathname === "/library" ? eclipse : toggle}
                     alt="library"
                     className="link-icon"
                   />
@@ -148,14 +172,23 @@ const Navbar = () => {
                 <li>
                   <a
                     onClick={(e) => handleScrollOrNavigate(e, "/blogs")}
-                    className={`${location.pathname === "/blogs" ? "active" : ""} ${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
+                    className={`${
+                      location.pathname === "/blogs" ? "active" : ""
+                    } ${
+                      useCheckIfPathIncludes([
+                        "complete-data",
+                        "signup",
+                        "store",
+                        "cart",
+                      ])
+                        ? "ar"
+                        : ""
+                    }`}
                   >
                     {t("navbar.blogs")}
                   </a>
                   <img
-                    src={
-                      location.pathname === "/blogs" ? eclipse : toggle
-                    }
+                    src={location.pathname === "/blogs" ? eclipse : toggle}
                     alt="blogs"
                     className="link-icon"
                   />
@@ -164,15 +197,22 @@ const Navbar = () => {
                 <li>
                   <a
                     href="#plans"
-                    onClick={(e) => handleScrollOrNavigate(e, "#plans")}
-                    className={`${useCheckIfPathIncludes(['complete-data','signup','store','cart']) ? 'ar':''}`}
-                  >   
+                    onClick={(e) => handleScrollOrNavigate(e, "/plans")}
+                    className={`${
+                      useCheckIfPathIncludes([
+                        "complete-data",
+                        "signup",
+                        "store",
+                        "cart",
+                      ])
+                        ? "ar"
+                        : ""
+                    }`}
+                  >
                     {t("navbar.plans")}
                   </a>
                   <img
-                    src={
-                      location.hash === "#plans" ? eclipse : toggle
-                    }
+                    src={location.hash === "#plans" ? eclipse : toggle}
                     alt="Plans"
                     className="link-icon"
                   />
@@ -198,12 +238,12 @@ const Navbar = () => {
               >
                 {languages.map((language) => (
                   <div
-                  key={language.name}
-                  className={`language-option ${
+                    key={language.name}
+                    className={`language-option ${
                       selectedLanguage === language.name ? "selected" : ""
                     }`}
                     onClick={() => handleLanguageSelect(language.name)}
-                    >
+                  >
                     <span className="language-text">{language.label}</span>
                     <div className="language-divider"></div>
                   </div>
@@ -211,7 +251,10 @@ const Navbar = () => {
               </div>
             </div>
 
-            <button className="cart" onClick={(e) => handleScrollOrNavigate(e, "/cart")}>
+            <button
+              className="cart"
+              onClick={(e) => handleScrollOrNavigate(e, "/cart")}
+            >
               <img src={cart} alt="cart" />
             </button>
             <button className="signin" onClick={handleSignInClick}>
@@ -221,7 +264,10 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <div className="mobile-menu-toggle" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <div
+          className="mobile-menu-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
           <span></span>
           <span></span>
           <span></span>
@@ -248,25 +294,40 @@ const Navbar = () => {
         <div className="mobile-sidebar-content">
           <ul className="mobile-links">
             <li>
-              <a href="/" onClick={(e) => handleScrollOrNavigate(e, "/")}>{t("navbar.home")}</a>
+              <a href="/" onClick={(e) => handleScrollOrNavigate(e, "/")}>
+                {t("navbar.home")}
+              </a>
             </li>
             <li>
-              <a href="#ourstory" onClick={(e) => handleScrollOrNavigate(e, "#ourstory")} className="hello">
+              <a
+                href="#ourstory"
+                onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
+                className="hello"
+              >
                 {t("navbar.story")}
               </a>
             </li>
             <li>
-              <a href="#features" onClick={(e) => handleScrollOrNavigate(e, "#features")}>
+              <a
+                href="#features"
+                onClick={(e) => handleScrollOrNavigate(e, "#features")}
+              >
                 {t("navbar.features")}
               </a>
             </li>
             <li>
-              <a href="#plans" onClick={(e) => handleScrollOrNavigate(e, "#plans")}>
+              <a
+                href="#plans"
+                onClick={(e) => handleScrollOrNavigate(e, "#plans")}
+              >
                 {t("navbar.plans")}
               </a>
             </li>
             <li>
-              <a href="/store" onClick={(e) => handleScrollOrNavigate(e, "/store")}>
+              <a
+                href="/store"
+                onClick={(e) => handleScrollOrNavigate(e, "/store")}
+              >
                 {t("navbar.store")}
               </a>
             </li>

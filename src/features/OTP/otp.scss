@@ -1,0 +1,54 @@
+.otp-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  .otp-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .otp-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    max-width: 880px;
+    width: 92vw;
+    background: #fff;
+    min-height: 500px;
+  }
+
+  .otp-left {
+    flex: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img {
+      max-width: 320px;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .otp-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .otp-card {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+}
