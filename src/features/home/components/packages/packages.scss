@@ -66,6 +66,12 @@
 
   scroll-behavior: smooth;
   scrollbar-width: none;
+
+  &.four {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+  }
 }
 
 .package-card {
@@ -75,8 +81,9 @@
   opacity: 80%;
   border-radius: 16px;
   padding: 24px;
-  min-width: 300px;
-  max-width: 350px;
+  width: 100%;
+  min-width: 260px;
+  max-width: 420px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
@@ -217,8 +224,11 @@
   }
 
   .package-cards {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .package-cards.four {
+    grid-template-columns: 1fr;
   }
 
   .package-card {

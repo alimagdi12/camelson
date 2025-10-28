@@ -103,7 +103,9 @@ const Packages: React.FC<PackagesProps> = ({ showAll = false }) => {
       <div className="tabs">
         <PackageTabs activeTab={activeTab} onTabChange={handleTabChange} />
       </div>
-      <div className="package-cards">
+      <div
+        className={`package-cards ${currentPackages.length > 3 ? "four" : ""}`}
+      >
         {currentPackages.map((packageData) => (
           <PackageCard
             key={packageData.id}
