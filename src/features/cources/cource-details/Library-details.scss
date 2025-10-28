@@ -11,7 +11,13 @@
         gap: 24px;
         justify-content: center;
         width: 100%;
-        padding: 24px;
+        padding: 0 24px;
         margin-bottom: 50px;
     }
+
+    .sidebar-wrapper{
+        grid-column: 9 / span 3;
+    }
 }
+
+
