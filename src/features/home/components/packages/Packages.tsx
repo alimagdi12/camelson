@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./packages.scss";
 import type { Package, PackageFeature } from "../../../../core/models/model";
-import correctIcon from "../../../../assets/icon/home/correct.png";
+import correctIcon from "../../../../assets/icon/home/correctgray.png";
 import { monthlyPackages, yearlyPackages } from "../../../../constants/plans";
 type PackagesProps = { showAll?: boolean };
 // Monthly packages data

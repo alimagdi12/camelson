@@ -9,6 +9,7 @@ import linkedin from "./icon/home/linkedin.svg";
 import tiktok from "./icon/home/tiktok.svg";
 import whatsapp from "./icon/home/whatsapp.svg";
 import correct from "./icon/home/correct.png";
+import correctgray from "./icon/home/correctgray.png";
 import swiperImg1 from "./images/home/siwperimg1.jpg";
 import cart from "./icon/home/cart.svg";
 import categoryImg from "./images/store/categoryImg.png";
@@ -40,4 +41,5 @@ export {
   cart,
   addtocart,
   addedtocart,
+  correctgray,
 };
