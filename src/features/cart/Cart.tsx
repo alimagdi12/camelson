@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartCard from "./components/cart-card/Cart-card";
 import CartSummary from "./components/cart-summary/Cart-summary";
 import "./cart.scss";
@@ -15,38 +15,58 @@ interface CartItem {
 }
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: "1",
-      name: "Product name",
-      description: "rdsafhukyjthrgefwdqgjtkkyjthrdsafhukyjthrgefwdqgjtkkyjth",
-      color: "red",
-      size: "XL",
-      price: 1050,
-      quantity: 12,
-      image: "/src/assets/images/store/swiper2.jpg",
-    },
-  
-    {
-      id: "2",
-      name: "Product name",
-      description: "rdsafhukyjthrgefwdqgjtkkyjthrdsafhukyjthrgefwdqgjtkkyjth",
-      color: "red",
-      size: "XL",
-      price: 1050,
-      quantity: 12,
-      image: "/src/assets/images/store/swiper2.jpg",
-    },
-  ]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Load and normalize cart from sessionStorage when the component mounts
+  useEffect(() => {
+    const storedCart = sessionStorage.getItem("cart");
+
+    if (storedCart) {
+      const parsed = JSON.parse(storedCart);
+
+      const normalized: CartItem[] = (Array.isArray(parsed) ? parsed : []).map(
+        (raw: Record<string, unknown>, index: number) => {
+          console.log(raw.price);
+
+          const numericPrice = Number(
+            String(raw?.price ?? "")
+              .toString()
+              .replace(/[^\d.]/g, "")
+          );
+
+          return {
+            id: String(raw?.id ?? raw?.name ?? index),
+            name: String(raw?.name ?? ""),
+            description: String(raw?.description ?? ""),
+            color: String(raw?.color ?? ""),
+            size: String(raw?.size ?? ""),
+            price: Number.isFinite(numericPrice) ? numericPrice : 0,
+            quantity: Number(raw?.quantity) > 0 ? Number(raw.quantity) : 1,
+            image: String(raw?.image ?? ""),
+          };
+        }
+      );
+
+      setCartItems(normalized);
+    }
+  }, []);
 
   const handleQuantityChange = (id: string, quantity: number) => {
-    setCartItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    );
+    setCartItems((prev) => {
+      const updated = prev.map((item) =>
+        item.id === id ? { ...item, quantity: Number(quantity) || 1 } : item
+      );
+      sessionStorage.setItem("cart", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const handleRemoveItem = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+    setCartItems((prev) => {
+      const updated = prev.filter((item) => item.id !== id);
+      sessionStorage.setItem("cart", JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const handleCheckout = () => {
@@ -62,10 +82,11 @@ const Cart = () => {
   };
 
   // Calculate totals
-  const subtotal = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const subtotal = cartItems.reduce((sum, item) => {
+    const price = Number(item.price) || 0;
+    const qty = Number(item.quantity) || 0;
+    return sum + price * qty;
+  }, 0);
   const total = subtotal; // No shipping fee as per design
 
   return (

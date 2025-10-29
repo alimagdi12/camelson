@@ -41,7 +41,7 @@
       border-radius: 8px;
       margin-bottom: 30px;
       overflow: hidden;
-      
+
       gap: 10px;
 
       .tab {
@@ -53,8 +53,8 @@
         color: #666;
         background: #fff;
         transition: all 0.3s ease;
-        
-    border-radius: 8px;
+
+        border-radius: 8px;
 
         &:hover {
           background: #fafafa;
@@ -154,7 +154,7 @@
   .sidebar-wrapper,
   .content-library {
     width: 100%;
-    grid-column: auto;
+    // grid-column: auto;
   }
 }
 
