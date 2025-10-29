@@ -1,7 +1,9 @@
+import PharoahLine from "../pharoah-line/Pharoah-line";
 import "./banner.scss";
 const Banner = () => {
   return (
     <>
+    <div className="banner-section">
       <div className="banner">
         <div className="text-box">
           <p>
@@ -13,6 +15,8 @@ const Banner = () => {
           <button>Start Learning</button>
         </div>
       </div>
+      <PharoahLine/>
+    </div>
     </>
   );
 };

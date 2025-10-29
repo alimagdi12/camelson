@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useCheckIfPathIncludes } from "../../shared.service";
+import Banner from "../banner/Banner"; // Adjust import path as needed
 
 const Navbar = () => {
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -13,6 +14,7 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+  
   // Change layout direction based on selected language
   useEffect(() => {
     document.body.dir = i18n.language === "ar" ? "rtl" : "ltr";
@@ -83,9 +85,11 @@ const Navbar = () => {
     { name: "English", label: "English" },
   ];
 
+  const isHomePage = location.pathname === "/";
+
   return (
     <>
-      <nav className={isHide ? "isHide" : ""}>
+      <nav className={isHide ? "isHide" : isHomePage ? "" : "not-absolute"}>
         <div className="inner-section">
           <div className="logo" onClick={handleLogoClick}>
             <img src={logo} alt="Logo" />
@@ -353,6 +357,9 @@ const Navbar = () => {
         className={`mobile-sidebar-overlay ${isMobileMenuOpen ? "open" : ""}`}
         onClick={() => setIsMobileMenuOpen(false)}
       ></div>
+
+      {/* Show Banner only on home page */}
+      {isHomePage && <Banner />}
     </>
   );
 };

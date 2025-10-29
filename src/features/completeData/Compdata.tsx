@@ -12,6 +12,8 @@ const Compdata = () => {
 
   return (
     <>
+    <div className="d-flex flex-column h-100 justify-content-between">
+
       <div className="section-container">
         {" "}
         <div className="img-box">
@@ -55,6 +57,7 @@ const Compdata = () => {
         </div>
       </div>
       <PharoahLine />
+    </div>
     </>
   );
 };

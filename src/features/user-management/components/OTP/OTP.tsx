@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { MuiOtpInput } from "mui-one-time-password-input";
-import PharoahLine from "../../shared/components/pharoah-line/Pharoah-line";
-import messageGif from "../../assets/gif/message.gif";
+import PharoahLine from "../../../../shared/components/pharoah-line/Pharoah-line";
+import messageGif from "../../../../assets/gif/message.gif";
 import "./otp.scss";
 
 const RESEND_SECONDS = 60;

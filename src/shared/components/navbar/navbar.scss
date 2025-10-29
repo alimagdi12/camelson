@@ -13,6 +13,11 @@ nav {
   &.isHide{
     display: none;
   }
+
+  // Remove absolute positioning when not on home page
+  &.not-absolute {
+    position: relative;
+  }
 }
 
 .inner-section{

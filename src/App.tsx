@@ -12,7 +12,7 @@ import Cart from "./features/cart/Cart";
 import TrackingOrder from "./features/trackOrder/TrackingOrder";
 import Library from "./features/cources/library/Library";
 import LibraryDetails from "./features/cources/cource-details/Library-details";
-import Otp from "./features/OTP/Otp";
+import Otp from "./features/user-management/components/OTP/OTP";
 import Plans from "./features/plans/Plans";
 function App() {
   return (

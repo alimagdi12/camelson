@@ -5,6 +5,8 @@
   border: none;
   display: flex;
   flex-direction: row;
+  margin-top: 120px;
+  margin-bottom: 120px;
   .left-section {
     width: 60%;
     position: relative;
@@ -38,12 +40,7 @@
     }
   }
   .right-section {
-    width: auto;
-    max-width: 60%;
-    min-width: 50%;
-    position: absolute;
-    right: 5%;
-    top: 28%;
+    width: 100%;
     height: auto;
     margin: auto;
     opacity: 1;

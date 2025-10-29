@@ -1,4 +1,4 @@
-import Banner from "./components/banner/Banner";
+import Banner from "../../shared/components/banner/Banner";
 import Aboutus from "./components/aboutus/Aboutus";
 import "./home.scss";
 import PharoahLine from "../../shared/components/pharoah-line/Pharoah-line";
@@ -8,8 +8,8 @@ import CustomSwiper from "./components/swiper-package/SwiperWrapper";
 const Home = () => {
   return (
     <div className="home-container">
-      <Banner />
-      <PharoahLine />
+      {/* <Banner /> */}
+      {/* <PharoahLine /> */}
       <div className="body">
         <Aboutus />
         <ImagesSection />

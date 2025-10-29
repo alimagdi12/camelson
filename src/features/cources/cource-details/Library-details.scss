@@ -2,7 +2,6 @@
     display: grid;
     width: 100%;
     grid-template-columns: repeat(12,1fr);
-    margin-top: 150px;
 
     .library-details-content{
         grid-column: 2/ span 7;

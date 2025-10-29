@@ -1,8 +1,6 @@
 import React from "react";
 import "./Images-section.scss";
-import upImage from "../../../../assets/images/home/upper.jpg";
 import middleImage from "../../../../assets/images/home/mddle.jpg";
-import underImage from "../../../../assets/images/home/under.jpg";
 import { useTranslation } from "react-i18next";
 
 function ImagesSection() {
@@ -17,9 +15,7 @@ function ImagesSection() {
       }}
     >
       <div className="left-section">
-        <img src={upImage} alt="pharoah" className="upper-image" />
         <img src={middleImage} alt="pharoah" className="middle-image" />
-        <img src={underImage} alt="pharoah" className="lower-image" />
       </div>
 
       <div 
