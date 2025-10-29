@@ -112,6 +112,13 @@
 /* ================================
      Responsive Styles
      ================================ */
+     @media (max-width: 1100px) {
+      .img-box {
+        display: none !important;
+       }
+     }
+     
+  
 
 /* Tablet and smaller screens */
 @media (max-width: 768px) {
@@ -126,10 +133,7 @@
       max-width: 500px;
     }
 
-    .img-box {
-      width: 100%;
-      max-width: 500px;
-    }
+   
   }
 
   .input-box h1 {

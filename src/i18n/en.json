@@ -5,8 +5,9 @@
     "plans": "Plans",
     "features": "Features",
     "story": "Our Story",
-    "libraries":"Liberaries",
-    "blogs": "Blogs"
+    "libraries": "Liberaries",
+    "blogs": "Blogs",
+    "cart": "Cart"
   },
 
   "home": {
@@ -43,6 +44,7 @@
     "year": "Academic year",
     "confirm": "Confirm"
   },
+
   "search": {
     "search": "Search"
   },

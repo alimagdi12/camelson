@@ -344,6 +344,14 @@ const Navbar = () => {
               </button>
             </div>
 
+            <button
+              className="mobile-cart"
+              onClick={(e) => handleScrollOrNavigate(e, "/cart")}
+            >
+              <img src={cart} alt="cart" />
+              <span>{t("navbar.cart") || "Cart"}</span>
+            </button>
+
             <button className="mobile-signin" onClick={handleSignInClick}>
               {t("login.title") || "Sign In"}
             </button>
