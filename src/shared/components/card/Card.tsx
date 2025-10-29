@@ -13,7 +13,6 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ title, image, onClick }) =>
             <Box className="card-background">
                 <img src={image} alt={title} className="background-image" />
             </Box>
-
             <CardContent className="card-content">
                 <Tooltip title={title}>
                 <Typography variant="h6" className="card-title" fontWeight={700}>

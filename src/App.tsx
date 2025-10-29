@@ -14,28 +14,37 @@ import Library from "./features/cources/library/Library";
 import LibraryDetails from "./features/cources/cource-details/Library-details";
 import Plans from "./features/plans/Plans";
 import Otp from "./features/user-management/components/OTP/OTP";
+import { useCheckIfPathIncludes } from "./shared/shared.service";
+
 function App() {
   return (
     <BrowserRouter>
-      <div className="body">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
-          <Route path="/store/:subcategory" element={<SubCategory />} />
-          <Route path="/complete-data" element={<Compdata />} />
-          <Route path="/user-management/:page" element={<UserManagement />} />
-          <Route path="/request-data" element={<RequestData />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/track-your-order" element={<TrackingOrder />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/library-details/:id" element={<LibraryDetails />} />
-          <Route path="/otp" element={<Otp />} />
-          <Route path="/plans" element={<Plans />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </BrowserRouter>
+  );
+}
+function AppContent() {
+  const isHide = useCheckIfPathIncludes(["/complete-data"]);
+
+  return (
+    <div className={`body ${isHide ? "not-mobile" : ""}`}>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/store" element={<Store />} />
+        <Route path="/store/:subcategory" element={<SubCategory />} />
+        <Route path="/complete-data" element={<Compdata />} />
+        <Route path="/user-management/:page" element={<UserManagement />} />
+        <Route path="/request-data" element={<RequestData />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/track-your-order" element={<TrackingOrder />} />
+        <Route path="/library" element={<Library />} />
+        <Route path="/library-details/:id" element={<LibraryDetails />} />
+        <Route path="/otp" element={<Otp />} />
+        <Route path="/plans" element={<Plans />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }
 
