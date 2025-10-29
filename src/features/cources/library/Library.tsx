@@ -4,12 +4,16 @@ import CategorySidebar from "../../../shared/components/category-sidebar/Categor
 import type { Content } from "../../../core/models/sidebarContext";
 import lungImage from "../../../assets/images/store/swiper2.jpg";
 import selectImage from "../../../assets/gif/data-loading.gif";
+import { usePageWidth } from "../../../shared/shared.service";
+import CategorySwiper from "../../sub-category/components/category-swiper/Category-swiper";
+import { useNavigate } from "react-router-dom";
 
 function Library() {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [content, setContent] = useState<Content | null>(null);
-  const [activeTab, setActiveTab] = useState<string>("Overview");
-
+  const [activeTab, setActiveTab] = useState<string>("Subjects");
+  const { isMobile } = usePageWidth(1024);
+  const navigate = useNavigate();
   const categoryData = [
     { id: 1, title: "The Heart", items: 99, image: lungImage },
     { id: 2, title: "Lung", items: 35, image: lungImage },
@@ -92,18 +96,18 @@ function Library() {
     image: string;
   }) => {
     setSelectedCategory(category.id);
-    setActiveTab("Overview"); // ✅ reset tab when selecting new category
+    setActiveTab("Subjects"); // reset tab to Subjects when selecting new category
     const categoryContent = getContentForCategory(category.id);
     setContent(categoryContent.length > 0 ? categoryContent[0] : null);
   };
 
   const renderTabContent = (tab: string, categoryContent: Content[]) => {
     switch (tab) {
-      case "Overview":
+      case "Subjects":
         return (
           <div className="library">
             {categoryContent.map((item) => (
-              <div key={item.id} className="library-card">
+              <div key={item.id} className="library-card" onClick={()=> navigate(`/product-details/${item.id}`)} >
                 <img src={item.image} alt={item.title} className="card-image" />
                 <h3 className="card-title">{item.title}</h3>
               </div>
@@ -118,10 +122,10 @@ function Library() {
           </div>
         );
 
-      case "Lectures":
+      case "Overview":
         return (
           <div className="empty-state">
-            <p>Lectures related to this category will appear here.</p>
+            <p>Subjects related to this category will appear here.</p>
           </div>
         );
 
@@ -154,7 +158,7 @@ function Library() {
     return (
       <div className="simple-content">
         <div className="tabs">
-          {["Overview", "Books", "Lectures"].map((tab) => (
+          {["Overview", "Books", "Subjects"].map((tab) => (
             <div
               key={tab}
               className={`tab ${activeTab === tab ? "active" : ""}`}
@@ -171,16 +175,24 @@ function Library() {
 
   return (
     <div className="library-container">
-      <div className="sidebar-wrapper">
-        <CategorySidebar
-          title="Library Categories"
+      {isMobile ? (
+        <CategorySwiper
           categories={categoryData}
-          showSearch={true}
-          searchPlaceholder="Search category..."
           onCategorySelect={handleCategorySelect}
-          defaultSelectedId={selectedCategory || undefined}
+          selectedCategoryId={selectedCategory || undefined}
         />
-      </div>
+      ) : (
+        <div className="sidebar-wrapper">
+          <CategorySidebar
+            title="Library Categories"
+            categories={categoryData}
+            showSearch={true}
+            searchPlaceholder="Search category..."
+            onCategorySelect={handleCategorySelect}
+            defaultSelectedId={selectedCategory || undefined}
+          />
+        </div>
+      )}
 
       <div
         className={`content-library ${

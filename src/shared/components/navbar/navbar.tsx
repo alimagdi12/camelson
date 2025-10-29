@@ -300,35 +300,34 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#ourstory"
-                onClick={(e) => handleScrollOrNavigate(e, "#ourstory")}
-                className="hello"
-              >
-                {t("navbar.story")}
-              </a>
-            </li>
-            <li>
-              <a
-                href="#features"
-                onClick={(e) => handleScrollOrNavigate(e, "#features")}
-              >
-                {t("navbar.features")}
-              </a>
-            </li>
-            <li>
-              <a
-                href="#plans"
-                onClick={(e) => handleScrollOrNavigate(e, "#plans")}
-              >
-                {t("navbar.plans")}
-              </a>
-            </li>
-            <li>
-              <a
                 href="/store"
                 onClick={(e) => handleScrollOrNavigate(e, "/store")}
               >
                 {t("navbar.store")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="/library"
+                onClick={(e) => handleScrollOrNavigate(e, "/library")}
+              >
+                {t("navbar.libraries")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="/blogs"
+                onClick={(e) => handleScrollOrNavigate(e, "/blogs")}
+              >
+                {t("navbar.blogs")}
+              </a>
+            </li>
+            <li>
+              <a
+                href="/plans"
+                onClick={(e) => handleScrollOrNavigate(e, "/plans")}
+              >
+                {t("navbar.plans")}
               </a>
             </li>
           </ul>

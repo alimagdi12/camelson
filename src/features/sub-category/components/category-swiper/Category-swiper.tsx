@@ -5,22 +5,19 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 import "./Category-swiper.scss";
 
-import image from "../../../../assets/images/store/swiper.jpg";
-import image2 from "../../../../assets/images/store/swiper2.jpg";
-import image3 from "../../../../assets/images/store/swiper3.png";
+import type { Category } from "../../../../core/models/categorySidebar";
 
-const categories = [
-  { title: "Medical tools", items: 15, image: image },
-  { title: "Dentistry", items: 9, image: image2 },
-  { title: "Hospital Equipment", items: 11, image: image3 },
-  { title: "Pharmacy Supplies", items: 50, image: image },
-  { title: "All", items: 85, image: image2 },
-  { title: "Hospital Equipment", items: 11, image: image3 },
-  { title: "Pharmacy Supplies", items: 50, image: image },
-  { title: "All", items: 85, image: image2 },
-];
+interface CategorySwiperProps {
+  categories: Category[];
+  onCategorySelect?: (category: Category) => void;
+  selectedCategoryId?: number;
+}
 
-const CategorySwiper = () => {
+const CategorySwiper: React.FC<CategorySwiperProps> = ({
+  categories,
+  onCategorySelect,
+  selectedCategoryId,
+}) => {
   return (
     <div className="category-swiper-container">
       <Swiper
@@ -30,8 +27,13 @@ const CategorySwiper = () => {
         modules={[FreeMode]}
         className="category-swiper"
       >
-        {categories.map((cat, index) => (
-          <SwiperSlide key={index} className="category-card">
+        {categories.map((cat) => (
+          <SwiperSlide
+            key={cat.id}
+            className="category-card"
+            onClick={() => onCategorySelect?.(cat)}
+            data-active={selectedCategoryId === cat.id ? "true" : "false"}
+          >
             <div className="image-section">
               <img src={cat.image} alt={cat.title} />
             </div>

@@ -166,6 +166,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onSearchChange }) =
             image={p.image}
             name={p.name}
             price={p.price}
+            quantity={1}
           />
         ))}
       </div>

@@ -108,6 +108,7 @@
 
         height: 64px;
         flex: 1;
+        min-width: 0; /* allow children to shrink for ellipsis */
         order: 0;
 
         .category-image {
@@ -139,9 +140,10 @@
 
           height: 57px;
 
-          flex: none;
+          flex: 1; /* take remaining space */
+          min-width: 50px; /* critical for text-overflow in flex */
           order: 1;
-          flex-grow: 0;
+          flex-grow: 1;
 
           h4 {
             height: 30px;
@@ -158,6 +160,15 @@
             order: 0;
             flex-grow: 0;
             margin: 0;
+          }
+
+          /* Truncate overflowing titles with ellipsis; tooltip shows full text */
+          .ellipsis {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: block;
           }
 
           span {
@@ -201,5 +212,11 @@
 @media (max-width: 1024px) {
   .sidebar-container {
     display: none;
+  }
+}
+
+@media (max-width: 1450px) {
+  .sidebar-container {
+    gap: 40px;
   }
 }

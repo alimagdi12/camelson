@@ -1,6 +1,12 @@
 import React, { useMemo, useState } from "react";
 import { IconButton, Button } from "@mui/material";
-import { Add, Remove, ShoppingCart, ArrowBack, ArrowForward } from "@mui/icons-material";
+import {
+  Add,
+  Remove,
+  ShoppingCart,
+  ArrowBack,
+  ArrowForward,
+} from "@mui/icons-material";
 import "./Product-details.scss";
 
 interface ProductDetailsProps {
@@ -26,7 +32,48 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // stable image array
-  const images = useMemo(() => (Array.isArray(image) ? image : [image]), [image]);
+  const images = useMemo(
+    () => (Array.isArray(image) ? image : [image]),
+    [image]
+  );
+  const handleAddToCart = () => {
+    const cart: Array<{
+      id?: string;
+      name: string;
+      description?: string;
+      color?: string;
+      size?: string;
+      price?: number;
+      quantity?: number;
+      image?: string;
+    }> = JSON.parse(sessionStorage.getItem("cart") || "[]");
+
+    const numericPrice = Number(String(price).replace(/[^\d.]/g, "")) || 0;
+    const id = `${name}-${selectedColor}-${selectedSize}`;
+    const primaryImage = images[0];
+
+    const existingIndex = cart.findIndex((item) => item.id === id);
+    if (existingIndex >= 0) {
+      const existing = cart[existingIndex];
+      const newQty = (Number(existing.quantity) || 0) + quantity;
+      cart[existingIndex] = { ...existing, quantity: newQty };
+    } else {
+      cart.push({
+        id,
+        name,
+        description,
+        color: selectedColor,
+        size: selectedSize,
+        price: numericPrice,
+        quantity,
+        image: primaryImage,
+      });
+    }
+
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+    // Optionally: provide lightweight feedback
+    console.log("added");
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -83,7 +130,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
             {colors.map((color) => (
               <button
                 key={color}
-                className={`option-btn ${selectedColor === color ? "active" : ""}`}
+                className={`option-btn ${
+                  selectedColor === color ? "active" : ""
+                }`}
                 onClick={() => setSelectedColor(color)}
               >
                 {color}
@@ -96,7 +145,9 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
             {sizes.map((size) => (
               <button
                 key={size}
-                className={`option-btn ${selectedSize === size ? "active" : ""}`}
+                className={`option-btn ${
+                  selectedSize === size ? "active" : ""
+                }`}
                 onClick={() => setSelectedSize(size)}
               >
                 {size}
@@ -113,12 +164,19 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
             <Remove />
           </IconButton>
           <span className="quantity">{quantity}</span>
-          <IconButton className="quantity-btn" onClick={() => setQuantity(quantity + 1)}>
+          <IconButton
+            className="quantity-btn"
+            onClick={() => setQuantity(quantity + 1)}
+          >
             <Add />
           </IconButton>
         </div>
 
-        <Button className="add-cart-btn" variant="outlined">
+        <Button
+          className="add-cart-btn"
+          variant="outlined"
+          onClick={handleAddToCart}
+        >
           Add to cart <ShoppingCart sx={{ ml: 1 }} />
         </Button>
       </div>

@@ -5,6 +5,7 @@ import type {
   Category,
   CategorySidebarProps,
 } from "../../../core/models/categorySidebar";
+import Tooltip from "@mui/material/Tooltip";
 
 const CategorySidebar: React.FC<CategorySidebarProps> = ({
   title = "Subcategory",
@@ -57,13 +58,15 @@ const CategorySidebar: React.FC<CategorySidebarProps> = ({
             onClick={() => handleSelect(category)}
           >
             <div className="category-content">
-             {category.image && ( <div className="category-image">
-                
+              {category.image && (
+                <div className="category-image">
                   <img src={category.image} alt={category.title} />
-               
-              </div> )}
+                </div>
+              )}
               <div className="category-info">
-                <h4>{category.title}</h4>
+                <Tooltip title={category.title} placement="top" arrow>
+                  <h4 className="ellipsis">{category.title}</h4>
+                </Tooltip>
                 <span>{category.items} items</span>
               </div>
             </div>
