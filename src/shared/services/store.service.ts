@@ -35,35 +35,7 @@ export async function fetchStoreCategories(): Promise<StoreCategory[]> {
   const response = await axios.get<StoreCategory[]>(dataUrl, {
     headers: { Accept: "application/json" },
   });
-  const categories = response.data || [];
-
-  const toMedicalUnsplash = (name: string, size: string = "800x600") => {
-    const query = encodeURIComponent(`medical, ${name}`);
-    return `https://source.unsplash.com/${size}/?${query}`;
-  };
-
-  const decorate = (cats: StoreCategory[]): StoreCategory[] => {
-    return cats.map((cat) => {
-      const subCategories = (cat.subCategories || []).map((sub) => {
-        const products = (sub.products || []).map((p) => {
-          const img = toMedicalUnsplash(p.name, "600x600");
-          return { ...p, images: [img] };
-        });
-        return {
-          ...sub,
-          image: toMedicalUnsplash(sub.name, "800x500"),
-          products,
-        };
-      });
-      return {
-        ...cat,
-        image: toMedicalUnsplash(cat.name, "1000x600"),
-        subCategories,
-      };
-    });
-  };
-
-  return decorate(categories);
+  return response.data || [];
 }
 
 export async function fetchCategoryById(

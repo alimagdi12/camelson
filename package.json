@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "add:ids": "node scripts/add_ids_to_medical_categories.mjs"
+    "add:ids": "node scripts/add_ids_to_medical_categories.mjs",
+    "images:unsplash": "node scripts/replace_images_in_medical_categories.mjs --strategy=unsplash --size=600x600",
+    "images:prefix": "node scripts/replace_images_in_medical_categories.mjs --strategy=prefix"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
