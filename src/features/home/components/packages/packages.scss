@@ -230,6 +230,7 @@
   .package-cards {
     display: grid;
     grid-template-columns: 1fr;
+    margin: auto;
   }
   .package-cards.four {
     grid-template-columns: 1fr;
@@ -238,6 +239,7 @@
   .package-card {
     width: 85%;
     max-width: 90%;
+    margin: auto;
   }
 }
 
@@ -261,6 +263,7 @@
     min-width: 260px;
     max-width: 300px;
     padding: 20px;
+    margin: auto;
   }
 
   .package-title {

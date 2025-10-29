@@ -3,12 +3,13 @@
 .sub-category-container {
   position: relative;
   overflow: hidden;
-  // margin: 0 auto;
-  margin-top: 160px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 50px;
   padding: 0 130px;
+  &.not-loading{
+    margin: 0 auto;
+  }
 }
 
 .main-content {

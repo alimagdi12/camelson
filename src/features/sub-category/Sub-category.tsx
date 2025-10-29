@@ -75,7 +75,7 @@ function SubCategory() {
   // legacy content rendering removed
 
   return (
-    <div className="sub-category-container">
+    <div className={`sub-category-container ${!loading?'not-loading':''}`} >
       {loading ? (
         <div className="main-content">
           <div
