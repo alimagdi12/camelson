@@ -48,7 +48,7 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      gap: 5px;
       width: 100%;
       padding: 0 10px;
       h3 {
@@ -91,7 +91,7 @@
         background: #d1d1d1;
         color: #000000;
 
-        svg{
+        svg {
           color: #fff;
         }
       }
@@ -100,7 +100,7 @@
         background-color: #ffbe3b;
         color: #fff;
 
-        &:hover{
+        &:hover {
           background-color: #da9f2a;
         }
       }

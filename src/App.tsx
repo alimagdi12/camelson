@@ -12,8 +12,8 @@ import Cart from "./features/cart/Cart";
 import TrackingOrder from "./features/trackOrder/TrackingOrder";
 import Library from "./features/cources/library/Library";
 import LibraryDetails from "./features/cources/cource-details/Library-details";
-import Otp from "./features/user-management/components/OTP/OTP";
 import Plans from "./features/plans/Plans";
+import Otp from "./features/user-management/components/OTP/OTP";
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/store/:sub-category" element={<SubCategory />} />
+          <Route path="/store/:subcategory" element={<SubCategory />} />
           <Route path="/complete-data" element={<Compdata />} />
           <Route path="/user-management/:page" element={<UserManagement />} />
           <Route path="/request-data" element={<RequestData />} />
