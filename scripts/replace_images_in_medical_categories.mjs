@@ -13,19 +13,26 @@ const args = Object.fromEntries(
   })
 );
 
-const strategy = (args.strategy || "unsplash").toString();
+const strategy = (args.strategy || "list").toString();
 const prefix = (args.prefix || "").toString().replace(/\/$/, "");
 const width = parseInt(args.size || "800", 10);
 
-// ✅ A list of working Unsplash medical photo IDs
+// ✅ Your provided image links (cycled across all items)
+const providedImageLinks = [
+  "https://plus.unsplash.com/premium_photo-1658506671316-0b293df7c72b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070",
+  "https://images.unsplash.com/photo-1513224502586-d1e602410265?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1931",
+  "https://images.unsplash.com/photo-1582560475093-ba66accbc424?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1920",
+];
+
+// Fallback Unsplash medical photo IDs (when strategy=unsplash)
 const medicalPhotoIds = [
-  "photo-1511174511562-5f7f18b874f8", // doctor with stethoscope
-  "photo-1588776814546-3121d1a1a04e", // nurse
-  "photo-1580281657521-61652f1989b0", // lab
-  "photo-1588776814159-5c9eeb8b9b42", // hospital
-  "photo-1582719478250-c89cae4dc85b", // surgery
-  "photo-1611691543927-1d51d0c1a4b5", // research
-  "photo-1504814532849-927ffce3f2da", // clinic tools
+  "photo-1511174511562-5f7f18b874f8",
+  "photo-1588776814546-3121d1a1a04e",
+  "photo-1580281657521-61652f1989b0",
+  "photo-1588776814159-5c9eeb8b9b42",
+  "photo-1582719478250-c89cae4dc85b",
+  "photo-1611691543927-1d51d0c1a4b5",
+  "photo-1504814532849-927ffce3f2da",
 ];
 
 // Utility to make safe filenames
@@ -46,6 +53,11 @@ function buildImageUrlByStrategy(name, level, index = 0) {
   if (strategy === "prefix") {
     if (!prefix) throw new Error("prefix strategy requires --prefix");
     return `${prefix}/${slug}.jpg`;
+  }
+
+  if (strategy === "list") {
+    const link = providedImageLinks[index % providedImageLinks.length];
+    return link;
   }
 
   // ✅ Use Unsplash CDN direct image (no API)
@@ -97,11 +109,7 @@ function main() {
     fs.writeFileSync(backupPath, raw, "utf8");
   }
 
-  fs.writeFileSync(
-    dataPath,
-    JSON.stringify(updated, null, 2) + "\n",
-    "utf8"
-  );
+  fs.writeFileSync(dataPath, JSON.stringify(updated, null, 2) + "\n", "utf8");
 
   console.log(
     `✅ Images updated using strategy="${strategy}" (${width}px wide)`
