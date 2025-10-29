@@ -9,13 +9,13 @@ nav {
   align-items: center;
   position: absolute;
   z-index: 5;
-  
-  &.isHide{
+
+  &.isHide {
     display: none;
   }
 }
 
-.inner-section{
+.inner-section {
   grid-column: 2 / span 10;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -34,8 +34,8 @@ nav {
   justify-content: start;
   cursor: pointer;
   padding: 0 0 0 20px;
-  
-  &.ar{
+
+  &.ar {
     padding: 0 20px 0 0;
   }
 }
@@ -93,7 +93,7 @@ nav {
           &.font-color {
             color: #000;
           }
-          &.ar{
+          &.ar {
             color: black;
           }
         }
@@ -159,7 +159,6 @@ nav {
     box-shadow: 0 0 8px #ffbe3b;
   }
 }
-
 
 .language-dropdown {
   position: absolute;
@@ -248,7 +247,7 @@ nav {
   }
 }
 
-.cart{
+.cart {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -266,7 +265,7 @@ nav {
     width: 28px;
     height: 28px;
     object-fit: contain;
-  } 
+  }
 }
 // ##################
 .signin {
@@ -312,7 +311,6 @@ nav {
     border-radius: 2px;
   }
 }
-
 
 [dir="rtl"] .mobile-menu-toggle {
   right: 90%;
@@ -442,6 +440,36 @@ nav {
         }
       }
 
+      .mobile-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 12px;
+        background: #ffbc01;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        img {
+          width: 20px;
+          height: 20px;
+          object-fit: contain;
+        }
+
+        span {
+          color: #000;
+          font-weight: 600;
+          font-size: 14px;
+        }
+
+        &:hover {
+          background: #ffbe3b;
+        }
+      }
+
       .mobile-signin {
         width: 100%;
         padding: 12px;
@@ -482,7 +510,7 @@ nav {
 }
 
 @media (max-width: 1100px) {
-  .inner-section{
+  .inner-section {
     grid-column: 1 / span 10;
   }
   .nav-links {
@@ -517,7 +545,7 @@ nav {
     .mobile-menu-toggle {
       display: flex;
     }
-    .mobile-menu-toggle span{
+    .mobile-menu-toggle span {
       background-color: black;
     }
   }
@@ -529,8 +557,7 @@ nav {
   }
 }
 
-
-@media (min-width:768px) and (max-width:1100px){
+@media (min-width: 768px) and (max-width: 1100px) {
   nav .logo img {
     width: 70%;
   }
@@ -549,7 +576,6 @@ nav {
     }
   }
 }
-
 
 .nowrap {
   white-space: nowrap;
