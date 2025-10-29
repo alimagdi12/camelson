@@ -1,62 +1,68 @@
 .section-container {
   display: flex;
   width: 100%;
-  align-items: center;
+  align-items: center; /* stretch children to equal height */
   justify-content: center;
-  gap: 100px;
+  gap: 40px; /* make sections sit wider */
+  padding: 32px 155px; /* a bit tighter to gain width */
+  margin-top: 50px;
   height: 100vh;
-  min-height: 100vh;
-  background-image: url("../../assets/images/home/home-gradiant.png");
-  background-position: center -500px;
-  background-size: cover;
-  background-repeat: repeat-x;
-  overflow: visible;
+  padding: 14% 155px;
 }
 /* Ensure image is visible and sized */
 .section-container .img-box {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 2; /* equal width with form without fixed values */
+  // max-width: 500px; /* cap width responsively */
+  border: 2px solid #2bb67300; /* subtle green frame like the design */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  height: 100%;
+
   img {
-    max-width: 90%;
-    height: auto;
+    width: 100%;
+    height: 100%;
     display: block;
-    margin-bottom: -50px;
+    object-fit: cover;
   }
 }
 
 .input-box {
-  width: 50%;
-  height: auto;
-  max-height: 80vh;
+  flex: 2; /* equal width with image without fixed values */
+  /* cap width responsively */
+  height: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.5);
+  background: #ffffff;
   border-radius: 16px;
-  padding: 24px;
+  // padding removed to keep height compact
+  gap: 25px; /* tighter vertical rhythm */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  margin-top: 100px;
 }
 
 .input-box h1 {
   text-align: center;
-  font-size: 36px;
+  font-size: 32px; /* slightly smaller to reduce height */
   font-weight: 700;
-  margin: 8px 0 24px 0;
+  margin: 6px 0 14px 0; /* tighter */
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  width: 90%;
+  gap: 12px; /* tighter */
+  width: 96%; /* widen fields inside */
 }
 
 .select-input {
-  height: 48px;
+  height: 46px; /* slightly shorter */
   border: 1px solid #000000;
   border-radius: 8px;
   padding: 0 16px;
@@ -67,7 +73,7 @@
 .phone-input {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: 46px; /* slightly shorter */
   border: 1px solid #000000;
   border-radius: 8px;
   background: #ffffff;
@@ -83,19 +89,20 @@
   border: none;
   outline: none;
   flex: 1;
-  font-size: 16px;
+  font-size: 16px; /* default */
   color: #bdbdbd;
 }
 
 .confirm-btn {
-  margin-top: 20px;
-  width: 100%;
-  height: 52px;
+  margin-top: 12px;
+  align-self: center;
+  width: 96%;
+  height: 50px; /* slightly shorter */
   background: #ffbe3b;
   border: none;
   border-radius: 8px;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 17px;
   color: #000000;
 }
 
@@ -115,18 +122,18 @@
 @media (max-width: 768px) {
   .section-container {
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
     height: auto;
     padding: 40px 20px;
 
     .input-box {
       width: 100%;
       max-width: 500px;
-      margin-top: 200px;
     }
 
     .img-box {
-      display: none; /* Hide image on mobile */
+      width: 100%;
+      max-width: 500px;
     }
   }
 
